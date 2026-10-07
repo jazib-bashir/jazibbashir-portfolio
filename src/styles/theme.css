@@ -100,7 +100,7 @@ html:not([data-theme='dark']) {
 	--focus-ring: 0 0 0 3px rgba(0, 74, 198, 0.15);
 
 	--contact-section-bg: #f2f3ff;
-	--contact-panel-bg: transparent;
+	--contact-panel-bg: #ffffff;
 	--contact-panel-border: transparent;
 	--contact-badge-text: #004ac6;
 	--contact-badge-bg: color-mix(in srgb, #dbe1ff 55%, transparent);
