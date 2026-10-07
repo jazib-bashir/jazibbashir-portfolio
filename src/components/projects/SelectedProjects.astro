@@ -32,12 +32,14 @@ import Icons from '../layout/Icons.astro';
 				{projectSlides.map((slideProjects) => (
 					<div class="projects__slide" data-carousel-slide>
 						{slideProjects.map((project) => (
-							<article
-								class:list={['project-card', project.slug === 'akute-health' && 'project-card--akute-health']}
-							>
+							<article class="project-card">
 								<div class="project-card__media">
-									<img src={project.primaryImage} alt="" loading="lazy" width="1200" height="640" />
-									<span class="project-card__image-badge">{project.imageBadge}</span>
+									<div class="project-card__frame">
+										<span class="project-card__image-badge">{project.imageBadge}</span>
+										<div class="project-card__shot">
+											<img src={project.primaryImage} alt="" loading="lazy" width="1200" height="640" />
+										</div>
+									</div>
 								</div>
 								<div class="project-card__body">
 									<div class="project-card__meta">
@@ -209,49 +211,92 @@ import Icons from '../layout/Icons.astro';
 		box-shadow: var(--shadow-md);
 	}
 
+	/* Stage: soft accent glow + dot grid, with the screenshot presented as a floating frame */
 	.project-card__media {
 		position: relative;
 		box-sizing: border-box;
 		display: flex;
-		align-items: stretch;
-		justify-content: stretch;
+		align-items: center;
+		justify-content: center;
 		width: 100%;
 		aspect-ratio: 16 / 9;
-		padding: var(--space-sm) var(--space-md);
-		background: var(--color-surface-container-low);
+		padding: 1.75rem 1.5rem 1.25rem;
+		background:
+			radial-gradient(
+				70% 90% at 50% 0%,
+				color-mix(in srgb, var(--color-primary) 12%, transparent),
+				transparent 70%
+			),
+			radial-gradient(
+					circle at 1px 1px,
+					color-mix(in srgb, var(--color-text-muted) 26%, transparent) 1px,
+					transparent 0
+				)
+				0 0 / 16px 16px,
+			var(--color-surface-container-low);
 		border-bottom: 1px solid var(--color-border-subtle);
 		overflow: hidden;
 	}
 
-	.project-card__media img {
-		display: block;
-		flex: 1 1 auto;
+	.project-card__frame {
+		position: relative;
+		height: 100%;
+		max-width: 100%;
+		aspect-ratio: 16 / 9;
+		border-radius: var(--radius-lg);
+		box-shadow:
+			0 0 0 1px var(--color-border-strong),
+			0 14px 28px -12px rgba(15, 23, 42, 0.28);
+		transition:
+			transform var(--transition-base),
+			box-shadow var(--transition-base);
+	}
+
+	.project-card:hover .project-card__frame {
+		transform: translateY(-3px);
+		box-shadow:
+			0 0 0 1px var(--color-primary),
+			0 18px 32px -12px rgba(15, 23, 42, 0.34);
+	}
+
+	.project-card__shot {
 		width: 100%;
 		height: 100%;
-		min-width: 0;
-		min-height: 0;
+		overflow: hidden;
+		border-radius: inherit;
+		background: var(--color-surface-container-lowest);
+	}
+
+	.project-card__shot img {
+		display: block;
+		width: 100%;
+		height: 100%;
 		object-fit: contain;
 		object-position: center center;
+		transition: transform 500ms ease;
 	}
 
-	/* Akute screenshots are edge-to-edge in the file; Concio’s placeholder includes built-in inset */
-	.project-card--akute-health .project-card__media {
-		padding: var(--space-md) var(--space-md) var(--space-sm);
+	.project-card:hover .project-card__shot img {
+		transform: scale(1.02);
 	}
 
+	/* Floating chip straddling the top edge of the frame */
 	.project-card__image-badge {
 		position: absolute;
-		top: 0.75rem;
-		left: 0.75rem;
-		padding: 0.25rem 0.625rem;
+		z-index: 2;
+		top: 0;
+		left: 0.875rem;
+		transform: translateY(-50%);
+		padding: 0.2rem 0.625rem;
 		font-family: var(--font-mono);
 		font-size: 11px;
 		font-weight: 600;
+		letter-spacing: 0.02em;
 		color: var(--color-primary);
-		background: color-mix(in srgb, var(--color-surface-container-lowest) 90%, transparent);
-		border: 1px solid var(--color-border);
-		border-radius: var(--radius-md);
-		backdrop-filter: blur(6px);
+		background: var(--color-surface-container-lowest);
+		border: 1px solid var(--color-border-strong);
+		border-radius: var(--radius-full);
+		white-space: nowrap;
 	}
 
 	.project-card__body {
@@ -381,7 +426,20 @@ import Icons from '../layout/Icons.astro';
 	}
 
 	html[data-theme='dark'] .project-card__image-badge {
-		background: color-mix(in srgb, var(--color-surface-container-lowest) 88%, transparent);
+		background: var(--color-surface-container-high);
+		border-color: var(--color-border);
+	}
+
+	html[data-theme='dark'] .project-card__frame {
+		box-shadow:
+			0 0 0 1px var(--color-border),
+			0 16px 32px -12px rgba(0, 0, 0, 0.6);
+	}
+
+	html[data-theme='dark'] .project-card:hover .project-card__frame {
+		box-shadow:
+			0 0 0 1px var(--color-primary),
+			0 20px 36px -12px rgba(0, 0, 0, 0.7);
 	}
 
 	html[data-theme='dark'] .project-card__tag {

@@ -12,7 +12,6 @@ interface Props {
 }
 
 const { project, previous, next } = Astro.props;
-const firstSlide = project.gallery[0];
 ---
 
 <article class="pd">
@@ -135,44 +134,40 @@ const firstSlide = project.gallery[0];
 				</div>
 			</div>
 
-			<div class="pd__gallery-stage-wrap">
-				<div class="pd__gallery-stage">
+			<div class="pd__gallery-layout">
+				<div class="pd__thumbs" role="tablist" aria-label="Gallery slides">
 					{project.gallery.map((slide, index) => (
-						<div
-							class:list={['pd__gallery-slide', index === 0 && 'is-active']}
-							data-gallery-slide
-							data-slide-tag={slide.tag}
-							data-slide-title={slide.title}
-							data-slide-desc={slide.description}
-							hidden={index !== 0}
-							aria-hidden={index !== 0 ? 'true' : 'false'}
+						<button
+							type="button"
+							class:list={['pd__thumb', index === 0 && 'is-active']}
+							data-gallery-thumb={index}
+							role="tab"
+							aria-selected={index === 0 ? 'true' : 'false'}
+							aria-label={`${String(index + 1).padStart(2, '0')} ${slide.thumbTitle}`}
 						>
-							<img src={slide.image} alt={slide.alt} loading={index === 0 ? 'eager' : 'lazy'} />
-						</div>
+							<span class="pd__thumb-num">{String(index + 1).padStart(2, '0')}</span>
+							<span class="pd__thumb-title">{slide.thumbTitle}</span>
+							<span class="pd__thumb-desc">{slide.description}</span>
+						</button>
 					))}
 				</div>
-				<div class="pd__gallery-caption">
-					<div class="pd__gallery-caption-main">
-						<span class="pd__gallery-tag" data-gallery-caption-tag>{firstSlide?.tag}</span>
-						<span class="pd__gallery-slide-title" data-gallery-caption-title>{firstSlide?.title}</span>
-					</div>
-					<span class="pd__gallery-slide-desc" data-gallery-caption-desc>{firstSlide?.description}</span>
-				</div>
-			</div>
 
-			<div class="pd__thumbs" role="tablist" aria-label="Gallery thumbnails">
-				{project.gallery.map((slide, index) => (
-					<button
-						type="button"
-						class:list={['pd__thumb', index === 0 && 'is-active']}
-						data-gallery-thumb={index}
-						role="tab"
-						aria-selected={index === 0 ? 'true' : 'false'}
-					>
-						<span class="pd__thumb-code">{slide.thumbCode}</span>
-						<span class="pd__thumb-title">{slide.thumbTitle}</span>
-					</button>
-				))}
+				<div class="pd__gallery-main">
+					<div class="pd__gallery-stage-wrap">
+						<div class="pd__gallery-stage">
+							{project.gallery.map((slide, index) => (
+								<div
+									class:list={['pd__gallery-slide', index === 0 && 'is-active']}
+									data-gallery-slide
+									hidden={index !== 0}
+									aria-hidden={index !== 0 ? 'true' : 'false'}
+								>
+									<img src={slide.image} alt={slide.alt} loading={index === 0 ? 'eager' : 'lazy'} />
+								</div>
+							))}
+						</div>
+					</div>
+				</div>
 			</div>
 		</div>
 	</section>

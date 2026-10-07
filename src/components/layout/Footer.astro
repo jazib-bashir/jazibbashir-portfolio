@@ -85,6 +85,19 @@ import { footerLinks, site } from '../../data/site';
 		color: var(--color-text-secondary);
 	}
 
+	/* Stacked brand on small screens: avoid a dangling separator dot */
+	@media (max-width: 639px) {
+		.site-footer__brand {
+			flex-direction: column;
+			align-items: flex-start;
+			gap: 0.125rem;
+		}
+
+		.site-footer__dot {
+			display: none;
+		}
+	}
+
 	.site-footer__tagline {
 		margin: var(--space-xs) 0 0;
 		max-width: 36rem;

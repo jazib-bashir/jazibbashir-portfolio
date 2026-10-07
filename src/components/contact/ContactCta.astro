@@ -58,6 +58,8 @@ import PageSection from '../layout/PageSection.astro';
 	}
 
 	.contact__panel {
+		--contact-gutter: var(--margin-page-sm);
+		width: calc(100% - 2 * var(--contact-gutter));
 		max-width: var(--layout-max);
 		margin-inline: auto;
 		padding-inline: var(--margin-page-sm);
@@ -216,6 +218,7 @@ import PageSection from '../layout/PageSection.astro';
 
 	@media (min-width: 768px) {
 		.contact__panel {
+			--contact-gutter: var(--margin-page);
 			padding-inline: var(--margin-page);
 		}
 
@@ -230,6 +233,7 @@ import PageSection from '../layout/PageSection.astro';
 
 	@media (min-width: 1024px) {
 		.contact__panel {
+			--contact-gutter: var(--margin-page-lg);
 			padding-inline: var(--margin-page-lg);
 		}
 

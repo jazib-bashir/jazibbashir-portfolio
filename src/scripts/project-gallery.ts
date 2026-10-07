@@ -7,14 +7,12 @@ export function initProjectGallery() {
 	const prev = root.querySelector<HTMLButtonElement>('[data-gallery-prev]');
 	const next = root.querySelector<HTMLButtonElement>('[data-gallery-next]');
 	const counter = root.querySelector<HTMLElement>('[data-gallery-counter]');
-	const tag = root.querySelector<HTMLElement>('[data-gallery-caption-tag]');
-	const title = root.querySelector<HTMLElement>('[data-gallery-caption-title]');
-	const desc = root.querySelector<HTMLElement>('[data-gallery-caption-desc]');
 
 	if (slides.length === 0) return;
 
 	const total = slides.length;
 	let index = 0;
+	let hasInitialized = false;
 
 	const pad = (n: number) => String(n).padStart(2, '0');
 
@@ -34,13 +32,13 @@ export function initProjectGallery() {
 
 		if (counter) counter.textContent = `${pad(index + 1)} / ${pad(total)}`;
 
-		const meta = slides[index]?.dataset;
-		if (tag && meta?.slideTag) tag.textContent = meta.slideTag;
-		if (title && meta?.slideTitle) title.textContent = meta.slideTitle;
-		if (desc && meta?.slideDesc) desc.textContent = meta.slideDesc;
-
 		if (prev) prev.disabled = total <= 1;
 		if (next) next.disabled = total <= 1;
+
+		if (hasInitialized) {
+			thumbs[index]?.scrollIntoView({ block: 'nearest', inline: 'nearest', behavior: 'smooth' });
+		}
+		hasInitialized = true;
 	};
 
 	prev?.addEventListener('click', () => {
