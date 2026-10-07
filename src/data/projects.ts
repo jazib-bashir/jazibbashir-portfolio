@@ -30,6 +30,13 @@ export type ProjectNavRef = {
 	subtitle: string;
 };
 
+export const selectedProjectsSection = {
+	label: 'ENGINEERING CASE STUDIES ———',
+	title: 'Selected Projects',
+	description:
+		'Selected work across complex operational software, multi-tenant SaaS and healthcare platforms.',
+} as const;
+
 export type Project = {
 	slug: string;
 	name: string;
@@ -103,12 +110,12 @@ export const projects: Project[] = [
 	{
 		slug: 'saar',
 		name: 'Saar by eMushrif',
-		category: 'ENTERPRISE OPERATIONS PLATFORM',
+		category: 'Enterprise Operations Platform',
 		categoryBadgeClass: 'primary',
 		shortDescription:
-			'An enterprise school transportation operations platform covering registrations, students, trips, routes, and live fleet management.',
+			'School transportation operations platform covering registrations, students, trips, routes, scheduling and fleet operations.',
 		role: 'Senior Frontend Engineer',
-		technologies: ['React', 'Next.js', 'TypeScript', 'Material UI', 'GraphQL', 'Google Maps'],
+		technologies: ['React', 'Next.js', 'TypeScript', 'Material UI', 'GraphQL'],
 		primaryImage:
 			'https://lh3.googleusercontent.com/aida/AEtjO1W6d_SNjmYWuSbPOYEu_0o5lR4XWqpIOnfB0cnzJLoKF0_Ck9LD6qQTAYSgKVGJQuxohj0ExtSFHjtGOUOWnJjHxhlywe-tPpnTvc-95UwYOBI-YQC_-SMDMHNbpkQXlY4mdNtDzH2pHKnYRuQGSqfCL-GStpxImRoRMMHYgdy6R-YpA3zty6zzdBgiMoLa7z816_1xHo10X1mv7NbM0nFNSz7Sj7vNry36HtUnGVwcfA',
 		imageBadge: 'eMushrif Fleet Ops',
@@ -260,11 +267,12 @@ export const projects: Project[] = [
 	{
 		slug: 'opensend',
 		name: 'OpenSend',
-		category: 'B2B SAAS / CDP',
+		category: 'B2B SaaS / CDP',
 		categoryBadgeClass: 'secondary',
-		shortDescription: 'Case study content to be added.',
-		role: 'Full Stack Engineer',
-		technologies: [],
+		shortDescription:
+			'Multi-tenant SaaS platform for identity resolution, customer data and marketing-platform integrations with admin and billing workflows.',
+		role: 'Full-Stack Engineer',
+		technologies: ['React', 'TypeScript', 'Node.js', 'Express', 'Prisma', 'PostgreSQL', 'Stripe'],
 		primaryImage: '/images/projects/placeholder.svg',
 		imageBadge: 'B2B SaaS / CDP',
 		footerLabel: 'Identity Resolution & CDP',
@@ -282,11 +290,12 @@ export const projects: Project[] = [
 	{
 		slug: 'concio',
 		name: 'Concio',
-		category: 'MENTORING & SCHEDULING SAAS',
+		category: 'Scheduling & Booking Platform',
 		categoryBadgeClass: 'tertiary',
-		shortDescription: 'Case study content to be added.',
-		role: 'Product Owner & Lead Full Stack Dev',
-		technologies: [],
+		shortDescription:
+			'Scheduling and booking platform for creating public booking pages, managing appointments and handling calendar-based workflows.',
+		role: 'Product Owner & Full-Stack Developer',
+		technologies: ['Angular', 'TypeScript', 'Node.js', 'Express', 'PostgreSQL', 'AWS'],
 		primaryImage: '/images/projects/placeholder.svg',
 		imageBadge: 'Mentoring & Scheduling',
 		footerLabel: 'Multi-Tenant Scheduling',
@@ -304,11 +313,12 @@ export const projects: Project[] = [
 	{
 		slug: 'akute-health',
 		name: 'Akute Health',
-		category: 'HEALTHCARE EHR',
+		category: 'Healthcare SaaS',
 		categoryBadgeClass: 'primary',
-		shortDescription: 'Case study content to be added.',
-		role: 'Role to be added',
-		technologies: [],
+		shortDescription:
+			'Multi-tenant clinical software covering patient workflows, clinical documentation, scheduling, labs, prescribing, communication and telemedicine.',
+		role: 'Full-Stack Engineer',
+		technologies: ['React', 'Node.js', 'FHIR', 'MongoDB', 'Zoom', 'GraphQL'],
 		primaryImage: '/images/projects/placeholder.svg',
 		imageBadge: 'Healthcare Platform',
 		footerLabel: 'Clinical Workflows',

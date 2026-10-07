@@ -1,37 +1,142 @@
 ---
-import { experience } from '../../data/experience';
+import { experience, experienceSection } from '../../data/experience';
+import { site } from '../../data/site';
 import PageSection from '../layout/PageSection.astro';
 import SectionHeader from '../layout/SectionHeader.astro';
+import Icons from '../layout/Icons.astro';
+
+const accentBar = {
+	primary: 'var(--color-primary)',
+	secondary: 'var(--color-secondary, #006780)',
+	outline: 'var(--color-text-muted)',
+};
 ---
 
 <PageSection id="experience-section" tone="canvas" ariaLabelledby="experience-heading">
-	<SectionHeader label="Career history" title="Professional Experience" titleId="experience-heading" />
+	<div class="experience__header">
+		<SectionHeader
+			label={experienceSection.label}
+			title={experienceSection.title}
+			description={experienceSection.description}
+			titleId="experience-heading"
+		/>
+		<a class="experience__cv-btn" href={site.cvUrl}>
+			<Icons name="download" />
+			{experienceSection.cvButtonLabel}
+		</a>
+	</div>
 
 	<div class="experience__list">
 		{experience.map((entry) => (
-			<article class="experience-card card card--elevated">
+			<article
+				class="experience-card card card--elevated"
+				style={`--bar: ${accentBar[entry.accent]}`}
+			>
 				<div class="experience-card__header">
 					<div>
-						<h3 class="headline-sm">{entry.role}</h3>
-						<p class="experience-card__org">{entry.organization}</p>
+						<h3 class="headline-md">{entry.role}</h3>
+						<p
+							class:list={[
+								'experience-card__org',
+								entry.orgTone === 'secondary' && 'experience-card__org--secondary',
+								entry.orgTone === 'muted' && 'experience-card__org--muted',
+							]}
+						>
+							{entry.organization}
+						</p>
 					</div>
-					<p class="experience-card__period">{entry.period}</p>
+					{entry.period && (
+						<p class="experience-card__period">
+							{entry.isCurrent && <span class="experience-card__period-dot" aria-hidden="true"></span>}
+							{entry.period}
+						</p>
+					)}
 				</div>
-				<p class="body-md">{entry.summary}</p>
+				<p class="body-md experience-card__summary">{entry.summary}</p>
 			</article>
 		))}
 	</div>
+
+	{experienceSection.careerSummary && (
+		<p class="body-md experience__career-summary">{experienceSection.careerSummary}</p>
+	)}
 </PageSection>
 
 <style>
+	.experience__header {
+		display: flex;
+		flex-direction: column;
+		gap: var(--space-md);
+		margin-bottom: var(--space-xl);
+	}
+
+	.experience__header :global(.section-header) {
+		margin-bottom: 0;
+	}
+
+	.experience__header :global(.section-header__description) {
+		max-width: 42rem;
+	}
+
+	.experience__cv-btn {
+		display: inline-flex;
+		align-items: center;
+		gap: var(--space-sm);
+		width: fit-content;
+		padding: 0.625rem 1rem;
+		font-size: 13px;
+		font-weight: 600;
+		color: var(--color-text-primary);
+		background: var(--color-surface-container-lowest);
+		border: 1px solid var(--color-border-strong);
+		border-radius: var(--radius-lg);
+		box-shadow: var(--shadow-sm);
+		transition: background-color var(--transition-fast);
+	}
+
+	.experience__cv-btn:hover {
+		background: var(--color-surface-container-low);
+	}
+
+	.experience__cv-btn :global(svg) {
+		color: var(--color-primary);
+	}
+
+	@media (min-width: 768px) {
+		.experience__header {
+			flex-direction: row;
+			align-items: flex-end;
+			justify-content: space-between;
+		}
+	}
+
 	.experience__list {
 		display: grid;
 		gap: var(--space-md);
 	}
 
+	.experience__career-summary {
+		margin: var(--space-lg) 0 0;
+		max-width: 48rem;
+		color: var(--color-text-secondary);
+	}
+
 	.experience-card {
+		position: relative;
 		padding: var(--space-lg);
+		padding-left: calc(var(--space-lg) + 0.375rem);
 		background: var(--color-surface-container-lowest);
+	}
+
+	.experience-card::before {
+		content: '';
+		position: absolute;
+		left: 0;
+		top: 2rem;
+		bottom: 2rem;
+		width: 0.375rem;
+		border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+		background: var(--bar);
 	}
 
 	.experience-card__header {
@@ -43,29 +148,91 @@ import SectionHeader from '../layout/SectionHeader.astro';
 
 	.experience-card__org {
 		margin: 0.25rem 0 0;
-		font-family: var(--font-mono);
-		font-size: 11px;
+		font-size: 15px;
+		line-height: 24px;
 		font-weight: 500;
 		color: var(--color-primary);
 	}
 
-	.experience-card__period {
-		margin: 0;
-		font-family: var(--font-mono);
-		font-size: 11px;
-		font-weight: 500;
-		color: var(--color-text-muted);
+	.experience-card__org--secondary {
+		color: var(--color-secondary, #006780);
 	}
 
-	.experience-card p:last-child {
-		margin: 0;
+	.experience-card__org--muted {
 		color: var(--color-text-secondary);
 	}
 
+	.experience-card__period {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.375rem;
+		margin: 0;
+		padding: 0.25rem 0.75rem;
+		width: fit-content;
+		font-family: var(--font-mono);
+		font-size: 11px;
+		font-weight: 500;
+		color: var(--color-text-primary);
+		background: var(--color-surface-container);
+		border-radius: var(--radius-full);
+	}
+
+	.experience-card__period-dot {
+		width: 0.5rem;
+		height: 0.5rem;
+		border-radius: var(--radius-full);
+		background: var(--color-tertiary);
+	}
+
+	.experience-card__summary {
+		margin: 0 0 var(--space-md);
+		max-width: 56rem;
+		color: var(--color-text-secondary);
+	}
+
+	.experience-card__artifacts {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+		gap: 0.5rem;
+		padding-top: var(--space-sm);
+		border-top: 1px solid var(--color-border-subtle);
+	}
+
+	.experience-card__artifacts-label {
+		font-family: var(--font-mono);
+		font-size: 11px;
+		font-weight: 600;
+		text-transform: uppercase;
+		color: var(--color-text-muted);
+	}
+
+	.experience-card__artifact {
+		padding: 0.25rem 0.625rem;
+		font-family: var(--font-mono);
+		font-size: 11px;
+		color: var(--color-text-primary);
+		background: var(--color-surface-container-low);
+		border-radius: var(--radius-sm);
+		transition:
+			color var(--transition-fast),
+			background-color var(--transition-fast);
+	}
+
+	.experience-card__artifact:hover {
+		color: var(--color-primary);
+		background: var(--color-surface-container);
+	}
+
 	@media (min-width: 768px) {
+		.experience-card {
+			padding: var(--space-xl);
+			padding-left: calc(var(--space-xl) + 0.375rem);
+		}
+
 		.experience-card__header {
 			flex-direction: row;
-			align-items: flex-start;
+			align-items: center;
 			justify-content: space-between;
 		}
 	}

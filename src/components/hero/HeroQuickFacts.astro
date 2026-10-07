@@ -1,61 +1,23 @@
 ---
 import PageSection from '../layout/PageSection.astro';
+import { site } from '../../data/site';
 ---
 
 <PageSection tone="tint" padding="compact" class="hero-facts" ariaLabel="Resume quick facts">
 	<div class="hero-facts__grid">
-		<article class="hero-facts__card card">
-			<div class="hero-facts__card-top">
-				<span class="hero-facts__value">10+ Years</span>
-			</div>
-			<h2 class="hero-facts__label">Software Engineering</h2>
-			<p class="hero-facts__text body-sm">
-				Sustained commercial production delivery and architectural evolution.
-			</p>
-			<p class="hero-facts__foot">
-				<span class="hero-facts__dot hero-facts__dot--primary"></span>
-				Commercial Tenacity
-			</p>
-		</article>
-		<article class="hero-facts__card card">
-			<div class="hero-facts__card-top">
-				<span class="hero-facts__value">Full-Stack</span>
-			</div>
-			<h2 class="hero-facts__label">Frontend + Backend</h2>
-			<p class="hero-facts__text body-sm">
-				Complete system awareness from component lifecycles to database internals.
-			</p>
-			<p class="hero-facts__foot hero-facts__foot--secondary">
-				<span class="hero-facts__dot hero-facts__dot--secondary"></span>
-				End-to-End Delivery
-			</p>
-		</article>
-		<article class="hero-facts__card card">
-			<div class="hero-facts__card-top">
-				<span class="hero-facts__value">Product Eng</span>
-			</div>
-			<h2 class="hero-facts__label">SaaS + Enterprise</h2>
-			<p class="hero-facts__text body-sm">
-				Built, scaled, and managed across global healthcare, ed-tech, and logistics.
-			</p>
-			<p class="hero-facts__foot hero-facts__foot--tertiary">
-				<span class="hero-facts__dot hero-facts__dot--tertiary"></span>
-				Operational Scale
-			</p>
-		</article>
-		<article class="hero-facts__card card">
-			<div class="hero-facts__card-top">
-				<span class="hero-facts__value">Tech Lead</span>
-			</div>
-			<h2 class="hero-facts__label">Product Ownership</h2>
-			<p class="hero-facts__text body-sm">
-				Translating messy real-world operational problems into structured software releases.
-			</p>
-			<p class="hero-facts__foot hero-facts__foot--primary-container">
-				<span class="hero-facts__dot hero-facts__dot--primary-container"></span>
-				Outcome Oriented
-			</p>
-		</article>
+		{site.heroQuickFacts.map((card) => (
+			<article class="hero-facts__card card">
+				<div class="hero-facts__card-top">
+					<span class="hero-facts__value">{card.value}</span>
+				</div>
+				<h2 class="hero-facts__label">{card.category}</h2>
+				<p class="hero-facts__text body-sm">{card.description}</p>
+				<p class:list={['hero-facts__foot', `hero-facts__foot--${card.accent}`]}>
+					<span class="hero-facts__dot"></span>
+					{card.tag}
+				</p>
+			</article>
+		))}
 	</div>
 </PageSection>
 

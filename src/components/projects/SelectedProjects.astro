@@ -1,5 +1,5 @@
 ---
-import { projectSlides } from '../../data/projects';
+import { projectSlides, selectedProjectsSection } from '../../data/projects';
 import Icons from '../layout/Icons.astro';
 ---
 
@@ -7,12 +7,9 @@ import Icons from '../layout/Icons.astro';
 	<div class="page-container projects__inner">
 		<div class="projects__header">
 			<div class="projects__header-main">
-				<p class="label-caps projects__eyebrow">Engineering case studies ———</p>
-				<h2 id="projects-heading" class="projects__title">Selected Projects</h2>
-				<p class="projects__lede body-md">
-					Dominant portfolio showcase across complex operational software, multi-tenant SaaS, and
-					real-time scheduling platforms.
-				</p>
+				<p class="label-caps projects__eyebrow">{selectedProjectsSection.label}</p>
+				<h2 id="projects-heading" class="projects__title">{selectedProjectsSection.title}</h2>
+				<p class="projects__lede body-md">{selectedProjectsSection.description}</p>
 			</div>
 			<div class="projects__header-controls">
 				<div class="projects__slide-indicator">

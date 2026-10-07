@@ -1,72 +1,100 @@
 ---
-import { certifications, education } from '../../data/education';
+import { continuingSpecialization, formalEducation } from '../../data/education';
 import PageSection from '../layout/PageSection.astro';
-import SectionHeader from '../layout/SectionHeader.astro';
 ---
 
 <PageSection tone="surface" ariaLabelledby="education-heading">
-	<SectionHeader label="Credentials" title="Education & Certifications" titleId="education-heading" />
-
 	<div class="education__grid">
-		<div class="education__column">
-			<h3 class="headline-sm education__column-title">Education</h3>
-			<div class="education__list">
-				{education.map((entry) => (
-					<article class="education-card card card--elevated">
-						<p class="label-caps">{entry.period}</p>
-						<h4 class="headline-sm">{entry.title}</h4>
-						<p class="education-card__institution">{entry.institution}</p>
-						<p class="body-md">{entry.detail}</p>
-					</article>
-				))}
+		<article class="education-card card card--elevated">
+			<div class="education-card__icon education-card__icon--primary" aria-hidden="true">
+				<span class="education-card__glyph">🎓</span>
 			</div>
-		</div>
+			<div class="education-card__body">
+				<p class="label-caps education-card__eyebrow education-card__eyebrow--primary">
+					{formalEducation.eyebrow}
+				</p>
+				<h2 id="education-heading" class="headline-sm">{formalEducation.title}</h2>
+				<p class="body-sm">{formalEducation.description}</p>
+			</div>
+		</article>
 
-		<div class="education__column">
-			<h3 class="headline-sm education__column-title">Certifications</h3>
-			<div class="education__list">
-				{certifications.map((entry) => (
-					<article class="education-card card card--elevated">
-						<p class="label-caps">{entry.year}</p>
-						<h4 class="headline-sm">{entry.name}</h4>
-						<p class="education-card__institution">{entry.issuer}</p>
-					</article>
-				))}
+		<article class="education-card card card--elevated">
+			<div class="education-card__icon education-card__icon--secondary" aria-hidden="true">
+				<span class="education-card__glyph">★</span>
 			</div>
-		</div>
+			<div class="education-card__body">
+				<p class="label-caps education-card__eyebrow education-card__eyebrow--secondary">
+					{continuingSpecialization.eyebrow}
+				</p>
+				<h3 class="headline-sm">{continuingSpecialization.title}</h3>
+				<p class="body-sm">{continuingSpecialization.description}</p>
+			</div>
+		</article>
 	</div>
 </PageSection>
 
 <style>
 	.education__grid {
 		display: grid;
-		gap: var(--space-xl);
-	}
-
-	.education__column-title {
-		margin: 0 0 var(--space-lg);
-	}
-
-	.education__list {
-		display: grid;
-		gap: var(--space-md);
+		gap: var(--space-lg);
 	}
 
 	.education-card {
+		display: flex;
+		align-items: flex-start;
+		gap: var(--space-md);
 		padding: var(--space-lg);
 		background: var(--color-surface-container-lowest);
 	}
 
-	.education-card h4 {
-		margin: var(--space-sm) 0;
+	.education-card__icon {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		flex-shrink: 0;
+		width: 3rem;
+		height: 3rem;
+		border-radius: var(--radius-lg);
+		background: var(--color-surface-container);
 	}
 
-	.education-card__institution {
-		margin: 0 0 var(--space-md);
-		font-family: var(--font-mono);
-		font-size: 11px;
-		font-weight: 500;
-		color: var(--color-text-muted);
+	.education-card__icon--primary {
+		color: var(--color-primary);
+	}
+
+	.education-card__icon--secondary {
+		color: var(--color-secondary, #006780);
+	}
+
+	.education-card__glyph {
+		font-size: 1.25rem;
+		line-height: 1;
+	}
+
+	.education-card__body {
+		display: flex;
+		flex-direction: column;
+		gap: 0.25rem;
+	}
+
+	.education-card__eyebrow {
+		margin: 0;
+		font-weight: 700;
+		text-transform: uppercase;
+		letter-spacing: 0.06em;
+	}
+
+	.education-card__eyebrow--primary {
+		color: var(--color-primary);
+	}
+
+	.education-card__eyebrow--secondary {
+		color: var(--color-secondary, #006780);
+	}
+
+	.education-card h2,
+	.education-card h3 {
+		margin: 0;
 	}
 
 	.education-card p:last-child {
@@ -74,7 +102,12 @@ import SectionHeader from '../layout/SectionHeader.astro';
 		color: var(--color-text-secondary);
 	}
 
-	@media (min-width: 1024px) {
+	.body-sm {
+		font-size: 13px;
+		line-height: 20px;
+	}
+
+	@media (min-width: 768px) {
 		.education__grid {
 			grid-template-columns: repeat(2, minmax(0, 1fr));
 		}

@@ -1,4 +1,4 @@
 export const about = {
 	summary:
-		'Biography and background summary to be added. This section will cover engineering approach, product collaboration, and the types of problems I focus on.',
+		"I'm a software engineer and product-focused technical leader with 10+ years of experience building and evolving production software. My work spans SaaS, healthcare and enterprise platforms, with a focus on complex frontend applications, backend services, integrations and real-world product workflows.",
 } as const;

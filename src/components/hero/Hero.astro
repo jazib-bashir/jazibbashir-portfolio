@@ -44,10 +44,6 @@ import Icons from '../layout/Icons.astro';
 					<Icons name="verified" />
 					Upwork
 				</a>
-				<a href={`mailto:${site.emailAddress}`}>
-					<Icons name="mail" />
-					{site.emailAddress}
-				</a>
 			</div>
 		</div>
 
@@ -66,33 +62,32 @@ import Icons from '../layout/Icons.astro';
 			</div>
 			<div class="hero__terminal-body">
 				<div class="hero__terminal-pill">
-					<span>PKT (UTC+5) • Full-Stack / Lead</span>
-					<span class="hero__terminal-badge">Active High-Impact Roles</span>
+					<span>{site.heroRuntime.statusLine}</span>
 				</div>
 				<dl class="hero__terminal-specs">
 					<div>
+						<dt>ROLE</dt>
+						<dd>{site.heroRuntime.role}</dd>
+					</div>
+					<div>
 						<dt>ARCH_FOCUS</dt>
-						<dd>Distributed SaaS &amp; Workflows</dd>
+						<dd>{site.heroRuntime.archFocus}</dd>
 					</div>
 					<div>
-						<dt>CODE_COVERAGE</dt>
-						<dd>High Resiliency / Tested E2E</dd>
+						<dt>CORE_COVERAGE</dt>
+						<dd>{site.heroRuntime.coreCoverage}</dd>
 					</div>
 					<div>
-						<dt>SYS_UPTIME_REC</dt>
-						<dd class="hero__terminal-accent">99.98% Across Projects</dd>
+						<dt>SYS_EXPERIENCE</dt>
+						<dd class="hero__terminal-accent">{site.heroRuntime.sysExperience}</dd>
 					</div>
 					<div>
 						<dt>STACK_MASTERY</dt>
-						<dd class="hero__terminal-primary">TypeScript / Node / Cloud</dd>
+						<dd class="hero__terminal-primary">{site.heroRuntime.stackMastery}</dd>
 					</div>
 				</dl>
-				<div class="hero__terminal-chart">
-					<div class="hero__terminal-chart-head">
-						<span>Historical Output &amp; Velocity</span>
-						<span class="hero__terminal-accent">PEAK HEALTH</span>
-					</div>
-					<div class="hero__terminal-bars" aria-hidden="true">
+				<div class="hero__terminal-chart" aria-hidden="true">
+					<div class="hero__terminal-bars">
 						<span style="--h: 40%"></span>
 						<span style="--h: 65%"></span>
 						<span style="--h: 55%"></span>
@@ -101,11 +96,6 @@ import Icons from '../layout/Icons.astro';
 						<span style="--h: 90%"></span>
 						<span style="--h: 85%"></span>
 						<span style="--h: 100%"></span>
-					</div>
-					<div class="hero__terminal-chart-foot">
-						<span>2015 Foundation</span>
-						<span>2020 Architecture</span>
-						<span>2026 Scale</span>
 					</div>
 				</div>
 			</div>
@@ -400,6 +390,11 @@ import Icons from '../layout/Icons.astro';
 
 	.hero__terminal-primary {
 		color: var(--color-primary) !important;
+	}
+
+	.hero__terminal-peak {
+		color: var(--color-tertiary);
+		font-weight: 700;
 	}
 
 	.hero__terminal-chart-head,

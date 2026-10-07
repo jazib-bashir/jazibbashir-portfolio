@@ -1,46 +1,71 @@
 ---
-import { navItems, site } from '../../data/site';
+import { footerLinks, site } from '../../data/site';
 ---
 
 <footer class="site-footer">
 	<div class="page-container site-footer__inner">
-		<div class="site-footer__brand">
-			<span class="site-footer__name">{site.name}</span>
-			<span class="site-footer__dot" aria-hidden="true">•</span>
-			<span class="site-footer__meta">Portfolio</span>
+		<div class="site-footer__top">
+			<div class="site-footer__brand-block">
+				<div class="site-footer__brand">
+					<span class="site-footer__name">{site.name}</span>
+					<span class="site-footer__dot" aria-hidden="true">•</span>
+					<span class="site-footer__role">{site.footerRole}</span>
+				</div>
+				<p class="site-footer__tagline body-md">{site.footerTagline}</p>
+			</div>
+			<div class="site-footer__status">
+				<span class="site-footer__status-dot" aria-hidden="true"></span>
+				<span class="site-footer__status-text">{site.footerStatus}</span>
+			</div>
 		</div>
 
-		<nav class="site-footer__nav" aria-label="Footer">
-			<ul>
-				{navItems.map((item) => (
-					<li>
-						<a href={item.href}>{item.label}</a>
-					</li>
-				))}
-			</ul>
-		</nav>
-
-		<p class="site-footer__copy">© {site.year} {site.name}. All rights reserved.</p>
+		<div class="site-footer__bottom">
+			<nav class="site-footer__nav" aria-label="Footer">
+				<ul>
+					{footerLinks.map((item) => (
+						<li>
+							<a
+								href={item.label === 'Download CV' ? site.cvUrl : item.href}
+								target={item.external ? '_blank' : undefined}
+								rel={item.external ? 'noopener noreferrer' : undefined}
+							>
+								{item.label}
+							</a>
+						</li>
+					))}
+				</ul>
+			</nav>
+			<p class="site-footer__copy">
+				© {site.year} {site.name}. {site.footerCopyrightSuffix}
+			</p>
+		</div>
 	</div>
 </footer>
 
 <style>
 	.site-footer {
 		border-top: 1px solid var(--color-border-subtle);
-		padding-block: var(--space-lg);
+		padding-block: var(--space-xl);
 		background: var(--color-surface-container-lowest);
 	}
 
 	.site-footer__inner {
 		display: flex;
 		flex-direction: column;
-		align-items: center;
-		gap: var(--space-md);
-		text-align: center;
+		gap: var(--space-lg);
+	}
+
+	.site-footer__top {
+		display: flex;
+		flex-direction: column;
+		gap: var(--space-lg);
+		padding-bottom: var(--space-lg);
+		border-bottom: 1px solid var(--color-border-subtle);
 	}
 
 	.site-footer__brand {
 		display: flex;
+		flex-wrap: wrap;
 		align-items: center;
 		gap: var(--space-sm);
 	}
@@ -53,17 +78,54 @@ import { navItems, site } from '../../data/site';
 	}
 
 	.site-footer__dot,
-	.site-footer__meta {
+	.site-footer__role {
 		font-family: var(--font-mono);
 		font-size: 11px;
 		font-weight: 500;
 		color: var(--color-text-secondary);
 	}
 
+	.site-footer__tagline {
+		margin: var(--space-xs) 0 0;
+		max-width: 36rem;
+		color: var(--color-text-secondary);
+	}
+
+	.site-footer__status {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.5rem;
+		width: fit-content;
+		padding: 0.375rem 0.75rem;
+		background: var(--color-surface-container-low);
+		border: 1px solid var(--color-border);
+		border-radius: var(--radius-lg);
+	}
+
+	.site-footer__status-dot {
+		position: relative;
+		width: 0.5rem;
+		height: 0.5rem;
+		border-radius: var(--radius-full);
+		background: var(--color-tertiary);
+	}
+
+	.site-footer__status-text {
+		font-family: var(--font-mono);
+		font-size: 11px;
+		font-weight: 500;
+		color: var(--color-text-primary);
+	}
+
+	.site-footer__bottom {
+		display: flex;
+		flex-direction: column;
+		gap: var(--space-md);
+	}
+
 	.site-footer__nav ul {
 		display: flex;
 		flex-wrap: wrap;
-		justify-content: center;
 		gap: var(--space-md);
 		margin: 0;
 		padding: 0;
@@ -77,24 +139,27 @@ import { navItems, site } from '../../data/site';
 	}
 
 	.site-footer__nav a:hover {
-		color: var(--color-text-primary);
+		color: var(--color-primary);
 	}
 
 	.site-footer__copy {
 		margin: 0;
-		font-size: 13px;
+		font-family: var(--font-mono);
+		font-size: 11px;
 		color: var(--color-text-secondary);
 	}
 
-	@media (min-width: 640px) {
-		.site-footer__inner {
+	@media (min-width: 1024px) {
+		.site-footer__top {
 			flex-direction: row;
+			align-items: center;
 			justify-content: space-between;
-			text-align: left;
 		}
 
-		.site-footer__copy {
-			text-align: right;
+		.site-footer__bottom {
+			flex-direction: row;
+			align-items: center;
+			justify-content: space-between;
 		}
 	}
 </style>
