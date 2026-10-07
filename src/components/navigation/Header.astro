@@ -1,11 +1,12 @@
 ---
 import { navItems, site } from '../../data/site';
+import { withBase } from '../../utils/withBase';
 import Icons from '../layout/Icons.astro';
 ---
 
 <header class="site-header">
 	<div class="page-container site-header__inner">
-		<a class="site-header__brand" href="/">
+		<a class="site-header__brand" href={withBase('/')}>
 			<span class="site-header__name">{site.name}</span>
 		</a>
 		<span class="site-header__title-badge">

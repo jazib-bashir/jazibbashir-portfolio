@@ -1,5 +1,6 @@
 ---
 import { projectSlides, selectedProjectsSection } from '../../data/projects';
+import { withBase } from '../../utils/withBase';
 import Icons from '../layout/Icons.astro';
 ---
 
@@ -37,7 +38,7 @@ import Icons from '../layout/Icons.astro';
 									<div class="project-card__frame">
 										<span class="project-card__image-badge">{project.imageBadge}</span>
 										<div class="project-card__shot">
-											<img src={project.primaryImage} alt="" loading="lazy" width="1200" height="640" />
+											<img src={withBase(project.primaryImage)} alt="" loading="lazy" width="1200" height="640" />
 										</div>
 									</div>
 								</div>
@@ -60,7 +61,7 @@ import Icons from '../layout/Icons.astro';
 								</div>
 								<div class="project-card__footer">
 									<span class="project-card__footer-label">{project.footerLabel}</span>
-									<a class="project-card__cta" href={`/projects/${project.slug}`}>
+									<a class="project-card__cta" href={withBase(`/projects/${project.slug}`)}>
 										View Project
 										<Icons name="arrow-right" />
 									</a>

@@ -32,6 +32,10 @@ jobs:
           node-version: 22
           package-manager: npm@latest
           out-dir: dist
+        env:
+          # Project Pages URL: https://jazib-bashir.github.io/jazibbashir-portfolio/
+          ASTRO_BASE: /jazibbashir-portfolio/
+          ASTRO_SITE: https://jazib-bashir.github.io/jazibbashir-portfolio
 
   deploy:
     needs: build

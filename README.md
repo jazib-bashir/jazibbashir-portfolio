@@ -32,3 +32,5 @@ Pushes to `main` run `.github/workflows/deploy.yml`, which builds with Astro and
 3. Re-run the latest **Deploy to GitHub Pages** workflow from the Actions tab.
 
 Custom domain: `public/CNAME` contains `jazibbashir.com`. After the first successful deploy, confirm the domain under **Pages → Custom domain** and configure DNS at your registrar (not in this repo).
+
+**Asset paths:** The CI build sets `ASTRO_BASE=/jazibbashir-portfolio/` so CSS and images load on `https://jazib-bashir.github.io/jazibbashir-portfolio/`. If you serve only from a custom domain at the site root, change the workflow env to `ASTRO_BASE=/` and `ASTRO_SITE=https://jazibbashir.com`.

@@ -3,6 +3,7 @@ import Icons from '../layout/Icons.astro';
 import type { Project } from '../../data/projects';
 import type { ProjectNavRef } from '../../data/projects';
 import { site } from '../../data/site';
+import { withBase } from '../../utils/withBase';
 import '../../styles/project-detail.css';
 
 interface Props {
@@ -17,7 +18,7 @@ const { project, previous, next } = Astro.props;
 <article class="pd">
 	<div class="pd__strip">
 		<div class="pd__strip-inner">
-			<a class="pd__back" href="/#selected-projects">
+			<a class="pd__back" href={withBase('/#selected-projects')}>
 				<Icons name="arrow-left" />
 				Back to Projects
 			</a>
@@ -46,7 +47,7 @@ const { project, previous, next } = Astro.props;
 				</div>
 				<div class="pd__hero-media">
 					<img
-						src={project.primaryImage}
+						src={withBase(project.primaryImage)}
 						alt={project.gallery[0]?.alt ?? `${project.name} project screenshot`}
 						width="1200"
 						height="720"
@@ -162,7 +163,7 @@ const { project, previous, next } = Astro.props;
 									hidden={index !== 0}
 									aria-hidden={index !== 0 ? 'true' : 'false'}
 								>
-									<img src={slide.image} alt={slide.alt} loading={index === 0 ? 'eager' : 'lazy'} />
+									<img src={withBase(slide.image)} alt={slide.alt} loading={index === 0 ? 'eager' : 'lazy'} />
 								</div>
 							))}
 						</div>
@@ -200,7 +201,7 @@ const { project, previous, next } = Astro.props;
 	<section class="pd__section pd__section--canvas pd__section--footer">
 		<div class="pd__section-inner">
 			<nav class="pd__footer-nav" aria-label="Project navigation">
-				<a class="pd__project-link" href={`/projects/${previous.slug}`}>
+				<a class="pd__project-link" href={withBase(`/projects/${previous.slug}`)}>
 					<span class="pd__project-link-label">
 						<Icons name="arrow-left" />
 						Previous project
@@ -208,11 +209,11 @@ const { project, previous, next } = Astro.props;
 					<span class="pd__project-link-name">{previous.name}</span>
 					<span class="pd__project-link-sub">{previous.subtitle}</span>
 				</a>
-				<a class="pd__all-projects" href="/#selected-projects">
+				<a class="pd__all-projects" href={withBase('/#selected-projects')}>
 					<Icons name="grid" />
 					All Projects
 				</a>
-				<a class="pd__project-link pd__project-link--next" href={`/projects/${next.slug}`}>
+				<a class="pd__project-link pd__project-link--next" href={withBase(`/projects/${next.slug}`)}>
 					<span class="pd__project-link-label">
 						Next project
 						<Icons name="arrow-right" />
@@ -235,7 +236,7 @@ const { project, previous, next } = Astro.props;
 					</p>
 				</div>
 				<div class="pd__cta-actions">
-					<a class="btn btn--primary" href="/#contact-section">
+					<a class="btn btn--primary" href={withBase('/#contact-section')}>
 						<Icons name="send" />
 						Let&apos;s Talk
 					</a>
