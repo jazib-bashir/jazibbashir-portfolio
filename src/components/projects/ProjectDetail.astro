@@ -1,0 +1,246 @@
+---
+import Icons from '../layout/Icons.astro';
+import type { Project } from '../../data/projects';
+import type { ProjectNavRef } from '../../data/projects';
+import { site } from '../../data/site';
+import '../../styles/project-detail.css';
+
+interface Props {
+	project: Project;
+	previous: ProjectNavRef;
+	next: ProjectNavRef;
+}
+
+const { project, previous, next } = Astro.props;
+const firstSlide = project.gallery[0];
+---
+
+<article class="pd">
+	<div class="pd__strip">
+		<div class="pd__strip-inner">
+			<a class="pd__back" href="/#selected-projects">
+				<Icons name="arrow-left" />
+				Back to Projects
+			</a>
+			<div class="pd__case-meta">
+				<span class="pd__case-pill">PROJECT CASE</span>
+				<span class="pd__case-id">{project.caseId}</span>
+			</div>
+		</div>
+	</div>
+
+	<section class="pd__section pd__section--lowest" aria-labelledby="pd-hero-title">
+		<div class="pd__section-inner">
+			<div class="pd__hero-grid">
+				<div class="pd__hero-copy">
+					<span class="pd__category">{project.category}</span>
+					<h1 id="pd-hero-title" class="pd__title">{project.name}</h1>
+					<p class="pd__role">{project.role}</p>
+					<p class="pd__lede body-lg">{project.heroDescription}</p>
+					{project.technologies.length > 0 && (
+						<div class="pd__tags">
+							{project.technologies.map((tech) => (
+								<span class="pd__tag">{tech}</span>
+							))}
+						</div>
+					)}
+				</div>
+				<div class="pd__hero-media">
+					<img
+						src={project.primaryImage}
+						alt={project.gallery[0]?.alt ?? `${project.name} project screenshot`}
+						width="1200"
+						height="720"
+					/>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section class="pd__section pd__section--canvas" aria-labelledby="pd-overview-title">
+		<div class="pd__section-inner">
+			<div class="pd__split">
+				<div class="pd__panel">
+					<span class="pd__panel-label">Project overview</span>
+					<h2 id="pd-overview-title" class="pd__panel-title">{project.overviewTitle}</h2>
+					<p class="pd__panel-body body-md">{project.overviewBody}</p>
+				</div>
+				<div class="pd__panel">
+					<div class="pd__panel-head">
+						<span class="pd__panel-label pd__panel-label--secondary">My role &amp; contribution</span>
+						<span class="pd__panel-role">{project.role}</span>
+					</div>
+					<h2 class="pd__panel-title">{project.roleContributionTitle}</h2>
+					<p class="pd__panel-body body-md">{project.roleContributionBody}</p>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section class="pd__section pd__section--lowest" aria-labelledby="pd-contributions-title">
+		<div class="pd__section-inner">
+			<div class="pd__section-head pd__section-head--row">
+				<div>
+					<p class="label-caps">Verified scope</p>
+					<h2 id="pd-contributions-title" class="pd__section-title">Key Contributions</h2>
+				</div>
+				<p class="pd__section-intro">{project.contributionsIntro}</p>
+			</div>
+			<div class="pd__modules">
+				{project.contributions.map((item) => (
+					<div class="pd__module">
+						<div class="pd__module-top">
+							<span class="pd__module-code">{item.module}</span>
+							<Icons name={item.icon} />
+						</div>
+						<h3 class="pd__module-title">{item.title}</h3>
+						<p class="pd__module-desc">{item.description}</p>
+					</div>
+				))}
+			</div>
+		</div>
+	</section>
+
+	<section
+		class="pd__section pd__section--canvas"
+		aria-labelledby="pd-gallery-title"
+		data-project-gallery
+	>
+		<div class="pd__section-inner">
+			<div class="pd__gallery-head">
+				<div>
+					<p class="label-caps">Interface showcase</p>
+					<h2 id="pd-gallery-title" class="pd__section-title">Project Gallery</h2>
+				</div>
+				<div class="pd__gallery-controls">
+					<button type="button" class="pd__gallery-btn" data-gallery-prev aria-label="Previous gallery slide">
+						<Icons name="arrow-left" />
+						Previous
+					</button>
+					<span class="pd__gallery-counter" data-gallery-counter aria-live="polite">
+						01 / {String(project.gallery.length).padStart(2, '0')}
+					</span>
+					<button type="button" class="pd__gallery-btn" data-gallery-next aria-label="Next gallery slide">
+						Next
+						<Icons name="arrow-right" />
+					</button>
+				</div>
+			</div>
+
+			<div class="pd__gallery-stage-wrap">
+				<div class="pd__gallery-stage">
+					{project.gallery.map((slide, index) => (
+						<div
+							class="pd__gallery-slide"
+							data-gallery-slide
+							data-gallery-tag={slide.tag}
+							data-gallery-title={slide.title}
+							data-gallery-desc={slide.description}
+							hidden={index !== 0}
+							aria-hidden={index !== 0 ? 'true' : 'false'}
+						>
+							<img src={slide.image} alt={slide.alt} loading={index === 0 ? 'eager' : 'lazy'} />
+						</div>
+					))}
+				</div>
+				<div class="pd__gallery-caption">
+					<div class="pd__gallery-caption-main">
+						<span class="pd__gallery-tag" data-gallery-tag>{firstSlide?.tag}</span>
+						<span class="pd__gallery-slide-title" data-gallery-title>{firstSlide?.title}</span>
+					</div>
+					<span class="pd__gallery-slide-desc" data-gallery-desc>{firstSlide?.description}</span>
+				</div>
+			</div>
+
+			<div class="pd__thumbs" role="tablist" aria-label="Gallery thumbnails">
+				{project.gallery.map((slide, index) => (
+					<button
+						type="button"
+						class:list={['pd__thumb', index === 0 && 'is-active']}
+						data-gallery-thumb={index}
+						role="tab"
+						aria-selected={index === 0 ? 'true' : 'false'}
+					>
+						<span class="pd__thumb-code">{slide.thumbCode}</span>
+						<span class="pd__thumb-title">{slide.thumbTitle}</span>
+					</button>
+				))}
+			</div>
+		</div>
+	</section>
+
+	<section class="pd__section pd__section--lowest" aria-labelledby="pd-tech-title">
+		<div class="pd__section-inner">
+			<div class="pd__section-head">
+				<p class="label-caps">Technical specifications</p>
+				<h2 id="pd-tech-title" class="pd__section-title">Technical Highlights</h2>
+			</div>
+			<div class="pd__tech-grid">
+				{project.technicalHighlights.map((group) => (
+					<div class:list={['pd__tech-card', `pd__tech-card--${group.accent}`]}>
+						<div class:list={['pd__tech-head', `pd__tech-head--${group.accent}`]}>
+							<Icons name={group.icon} />
+							<span>{group.label}</span>
+						</div>
+						<ul class="pd__tech-list">
+							{group.items.map((item) => (
+								<li>{item}</li>
+							))}
+						</ul>
+					</div>
+				))}
+			</div>
+		</div>
+	</section>
+
+	<section class="pd__section pd__section--canvas pd__section--footer">
+		<div class="pd__section-inner">
+			<nav class="pd__footer-nav" aria-label="Project navigation">
+				<a class="pd__project-link" href={`/projects/${previous.slug}`}>
+					<span class="pd__project-link-label">
+						<Icons name="arrow-left" />
+						Previous project
+					</span>
+					<span class="pd__project-link-name">{previous.name}</span>
+					<span class="pd__project-link-sub">{previous.subtitle}</span>
+				</a>
+				<a class="pd__all-projects" href="/#selected-projects">
+					<Icons name="grid" />
+					All Projects
+				</a>
+				<a class="pd__project-link pd__project-link--next" href={`/projects/${next.slug}`}>
+					<span class="pd__project-link-label">
+						Next project
+						<Icons name="arrow-right" />
+					</span>
+					<span class="pd__project-link-name">{next.name}</span>
+					<span class="pd__project-link-sub">{next.subtitle}</span>
+				</a>
+			</nav>
+
+			<div class="pd__cta">
+				<div>
+					<p class="pd__cta-badge">
+						<span class="pd__cta-badge-dot" aria-hidden="true"></span>
+						Available for high-impact roles
+					</p>
+					<h3 class="pd__cta-title">Looking for a Senior Full-Stack or Product Engineer?</h3>
+					<p class="pd__cta-text">
+						I build resilient web platforms, design systems, and high-throughput production software with
+						architectural clarity.
+					</p>
+				</div>
+				<div class="pd__cta-actions">
+					<a class="btn btn--primary" href="/#contact-section">
+						<Icons name="send" />
+						Let&apos;s Talk
+					</a>
+					<a class="btn btn--secondary" href={site.cvUrl}>
+						<Icons name="download" />
+						Download CV
+					</a>
+				</div>
+			</div>
+		</div>
+	</section>
+</article>

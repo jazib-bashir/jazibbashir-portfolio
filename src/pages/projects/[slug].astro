@@ -1,0 +1,32 @@
+---
+import ProjectDetail from '../../components/projects/ProjectDetail.astro';
+import MainLayout from '../../layouts/MainLayout.astro';
+import { getProjectBySlug, getProjectNeighbors, projects } from '../../data/projects';
+import { site } from '../../data/site';
+
+export function getStaticPaths() {
+	return projects.map((project) => ({
+		params: { slug: project.slug },
+	}));
+}
+
+const { slug } = Astro.params;
+const project = getProjectBySlug(slug ?? '');
+
+if (!project) {
+	return Astro.redirect('/');
+}
+
+const { previous, next } = getProjectNeighbors(project.slug);
+const title = `${project.name} — Project | ${site.name}`;
+const description = project.heroDescription;
+---
+
+<MainLayout title={title} description={description}>
+	<ProjectDetail project={project} previous={previous} next={next} />
+</MainLayout>
+
+<script>
+	import { initProjectGallery } from '../../scripts/project-gallery';
+	initProjectGallery();
+</script>
