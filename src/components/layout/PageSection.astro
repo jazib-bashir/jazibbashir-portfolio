@@ -1,0 +1,37 @@
+---
+type SectionTone = 'canvas' | 'surface' | 'tint';
+
+interface Props {
+	id?: string;
+	tone?: SectionTone;
+	padding?: 'default' | 'compact';
+	class?: string;
+	ariaLabelledby?: string;
+	fullBleed?: boolean;
+}
+
+const {
+	id,
+	tone = 'canvas',
+	padding = 'default',
+	class: className = '',
+	ariaLabelledby,
+	fullBleed = false,
+} = Astro.props;
+---
+
+<section
+	id={id}
+	class:list={[
+		'page-section',
+		`page-section--${tone}`,
+		padding === 'compact' && 'page-section--compact',
+		fullBleed && 'page-section--bleed',
+		className,
+	]}
+	aria-labelledby={ariaLabelledby}
+>
+	<div class:list={[!fullBleed && 'page-container', fullBleed && 'page-section__bleed-inner']}>
+		<slot />
+	</div>
+</section>

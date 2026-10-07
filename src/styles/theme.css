@@ -1,0 +1,188 @@
+:root {
+	--font-display: 'Hanken Grotesk', system-ui, sans-serif;
+	--font-body: 'Inter', system-ui, sans-serif;
+	--font-mono: 'JetBrains Mono', ui-monospace, monospace;
+
+	--layout-max: 90rem;
+	--margin-page-sm: 1rem;
+	--margin-page: 1.5rem;
+	--margin-page-lg: 4rem;
+
+	--radius-sm: 0.25rem;
+	--radius-md: 0.375rem;
+	--radius-lg: 0.5rem;
+	--radius-xl: 0.75rem;
+	--radius-full: 9999px;
+
+	--container-max: var(--layout-max);
+	--container-wide: var(--layout-max);
+	--gutter: 1.5rem;
+	--margin-inline: var(--margin-page-sm);
+
+	--space-xs: 0.25rem;
+	--space-sm: 0.5rem;
+	--space-md: 1rem;
+	--space-lg: 1.5rem;
+	--space-xl: 2.5rem;
+	--space-2xl: 4rem;
+	--space-3xl: 6rem;
+
+	--transition-fast: 150ms ease;
+	--transition-base: 200ms ease;
+
+	--text-display: clamp(2.25rem, 5vw, 3.5rem);
+	--text-headline-xl-fixed: clamp(1.75rem, 4vw, 2.5rem);
+	--text-headline-lg-fixed: clamp(1.5rem, 3vw, 1.75rem);
+	--text-display-leading: 1.15;
+	--text-display-tracking: -0.03em;
+
+	--text-headline-xl: clamp(1.75rem, 3vw, 2.5rem);
+	--text-headline-lg: clamp(1.375rem, 2.5vw, 1.75rem);
+	--text-headline-md: 1.375rem;
+	--text-headline-sm: 1.125rem;
+
+	--text-body-lg: 1.125rem;
+	--text-body-md: 0.9375rem;
+	--text-body-sm: 0.8125rem;
+
+	--text-nav: 0.875rem;
+	--text-label: 0.6875rem;
+}
+
+html:not([data-theme='dark']) {
+	color-scheme: light;
+
+	--color-canvas: #faf8ff;
+	--color-canvas-muted: #f2f3ff;
+	--color-surface: #ffffff;
+	--color-surface-elevated: #ffffff;
+	--color-surface-container: #eaedff;
+	--color-surface-container-high: #e2e7ff;
+	--color-surface-container-low: #f2f3ff;
+	--color-surface-container-lowest: #ffffff;
+	--color-primary-container: #2563eb;
+
+	--color-text-primary: #131b2e;
+	--color-text-secondary: #434655;
+	--color-text-muted: #737686;
+	--color-text-code: #131b2e;
+
+	--color-border: rgba(195, 198, 215, 0.3);
+	--color-border-strong: #c3c6d7;
+	--color-border-subtle: rgba(195, 198, 215, 0.2);
+
+	--color-primary: #004ac6;
+	--color-primary-hover: #003ea8;
+	--color-primary-active: #00174b;
+	--color-primary-fixed: #dbe1ff;
+	--color-on-primary: #ffffff;
+
+	--color-secondary: #006780;
+	--color-secondary-fixed: #b7eaff;
+	--color-tertiary: #006243;
+	--color-tertiary-fixed: #85f8c4;
+	--color-tertiary-container: #007d57;
+	--color-accent-cyan: #0891b2;
+	--color-accent-violet: #7c3aed;
+	--color-status: #059669;
+	--color-status-muted: rgba(16, 185, 129, 0.08);
+	--color-status-border: rgba(16, 185, 129, 0.25);
+	--color-status-text: #065f46;
+
+	--color-tag-bg: #eaedff;
+	--color-tag-text: #131b2e;
+	--color-label: #004ac6;
+
+	--shadow-sm: 0 1px 2px 0 rgba(15, 23, 42, 0.04), 0 1px 3px 0 rgba(15, 23, 42, 0.02);
+	--shadow-md: 0 4px 6px -1px rgba(15, 23, 42, 0.06), 0 2px 4px -2px rgba(15, 23, 42, 0.04);
+	--shadow-lg: 0 20px 25px -5px rgba(15, 23, 42, 0.08), 0 8px 10px -6px rgba(15, 23, 42, 0.04);
+
+	--focus-ring: 0 0 0 3px rgba(0, 74, 198, 0.15);
+
+	--contact-section-bg: #f2f3ff;
+	--contact-panel-bg: transparent;
+	--contact-panel-border: transparent;
+	--contact-badge-text: #004ac6;
+	--contact-badge-bg: color-mix(in srgb, #dbe1ff 55%, transparent);
+	--contact-badge-border: color-mix(in srgb, #004ac6 30%, transparent);
+	--contact-btn-secondary-bg: #ffffff;
+	--contact-btn-secondary-text: #131b2e;
+	--contact-btn-secondary-border: rgba(195, 198, 215, 0.3);
+	--contact-status-dot: #10b981;
+}
+
+html[data-theme='dark'] {
+	color-scheme: dark;
+
+	/* Obsidian Engineering — matches Stitch dark export */
+	--color-canvas: #0f131c;
+	--color-canvas-muted: #181c24;
+	--color-surface: #0f131c;
+	--color-surface-elevated: #262a33;
+	--color-surface-container: #1c2028;
+	--color-surface-container-high: #262a33;
+	--color-surface-container-low: #181c24;
+	--color-surface-container-lowest: #0a0e16;
+	--color-primary-container: #4d8eff;
+
+	--color-text-primary: #dfe2ee;
+	--color-text-secondary: #c2c6d6;
+	--color-text-muted: #8c909f;
+	--color-text-code: #dfe2ee;
+
+	--color-border: rgba(66, 71, 84, 0.55);
+	--color-border-strong: #424754;
+	--color-border-subtle: rgba(66, 71, 84, 0.35);
+
+	--color-primary: #adc6ff;
+	--color-primary-hover: #4d8eff;
+	--color-primary-active: #005ac2;
+	--color-primary-fixed: #d8e2ff;
+	--color-on-primary: #002e6a;
+
+	--color-secondary: #4cd7f6;
+	--color-secondary-fixed: #acedff;
+	--color-tertiary: #d0bcff;
+	--color-tertiary-fixed: #e9ddff;
+	--color-tertiary-container: #a078ff;
+	--color-accent-cyan: #4cd7f6;
+	--color-accent-violet: #d0bcff;
+	--color-status: #4cd7f6;
+	--color-status-muted: rgba(76, 215, 246, 0.08);
+	--color-status-border: rgba(76, 215, 246, 0.25);
+	--color-status-text: #4cd7f6;
+
+	--color-tag-bg: rgba(255, 255, 255, 0.04);
+	--color-tag-text: #c2c6d6;
+	--color-label: #adc6ff;
+
+	--shadow-sm: 0 1px 0 0 rgba(255, 255, 255, 0.06) inset;
+	--shadow-md: inset 0 1px 0 0 rgba(255, 255, 255, 0.08), 0 20px 40px -15px rgba(0, 0, 0, 0.65);
+	--shadow-lg: 0 20px 40px -15px rgba(0, 0, 0, 0.65);
+
+	--focus-ring: 0 0 0 1px #adc6ff, 0 0 0 4px rgba(173, 198, 255, 0.2);
+
+	--contact-section-bg: #0f131c;
+	--contact-panel-bg: linear-gradient(180deg, #1c2028 0%, #0a0e16 100%);
+	--contact-panel-border: rgba(66, 71, 84, 0.55);
+	--contact-badge-text: #4cd7f6;
+	--contact-badge-bg: rgba(76, 215, 246, 0.08);
+	--contact-badge-border: rgba(76, 215, 246, 0.25);
+	--contact-btn-secondary-bg: rgba(255, 255, 255, 0.03);
+	--contact-btn-secondary-text: #dfe2ee;
+	--contact-btn-secondary-border: rgba(66, 71, 84, 0.55);
+	--contact-status-dot: #4cd7f6;
+}
+
+@media (min-width: 768px) {
+	:root {
+		--margin-inline: var(--margin-page);
+		--gutter: 2rem;
+	}
+}
+
+@media (min-width: 1024px) {
+	:root {
+		--margin-inline: var(--margin-page-lg);
+	}
+}

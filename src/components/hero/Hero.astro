@@ -1,0 +1,444 @@
+---
+import PageSection from '../layout/PageSection.astro';
+import { site } from '../../data/site';
+import Icons from '../layout/Icons.astro';
+---
+
+<PageSection tone="canvas" class="hero" ariaLabelledby="hero-heading">
+	<div class="hero__grid">
+		<div class="hero__main">
+			<div class="hero__pill">
+				<span class="hero__pill-dot" aria-hidden="true"></span>
+				<span class="hero__pill-text">{site.heroPill}</span>
+			</div>
+			<p class="label-caps hero__eyebrow">{site.heroEyebrow}</p>
+			<div class="hero__headline-block">
+				<h1 id="hero-heading" class="hero__title">{site.name}</h1>
+				<p class="hero__subtitle">{site.heroSubtitle}</p>
+			</div>
+			<p class="hero__summary body-lg">{site.heroSummary}</p>
+			<figure class="hero__quote card">
+				<Icons name="quote" class="hero__quote-icon" />
+				<blockquote class="hero__quote-text body-md">“{site.heroQuote}”</blockquote>
+			</figure>
+			<div class="hero__actions">
+				<a class="btn btn--primary" href="#selected-projects">
+					View My Work
+					<Icons name="arrow-down" />
+				</a>
+				<a class="btn btn--secondary" href={site.cvUrl}>
+					<Icons name="download" />
+					Download CV
+				</a>
+				<a class="btn btn--ghost hero__talk" href="#contact-section">
+					Let’s talk
+					<Icons name="external" />
+				</a>
+			</div>
+			<div class="hero__channels">
+				<a href={site.linkedInUrl} target="_blank" rel="noopener noreferrer">
+					<Icons name="verified" />
+					LinkedIn
+				</a>
+				<a href={site.upworkUrl} target="_blank" rel="noopener noreferrer">
+					<Icons name="verified" />
+					Upwork
+				</a>
+				<a href={`mailto:${site.emailAddress}`}>
+					<Icons name="mail" />
+					{site.emailAddress}
+				</a>
+			</div>
+		</div>
+
+		<aside class="hero__terminal card card--elevated" aria-label="Profile runtime summary">
+			<div class="hero__terminal-bar">
+				<div class="hero__terminal-dots">
+					<span class="hero__terminal-dot hero__terminal-dot--red"></span>
+					<span class="hero__terminal-dot hero__terminal-dot--yellow"></span>
+					<span class="hero__terminal-dot hero__terminal-dot--green"></span>
+					<span class="hero__terminal-label">runtime: jazib.bashir</span>
+				</div>
+				<div class="hero__terminal-online">
+					<span class="hero__terminal-online-dot" aria-hidden="true"></span>
+					<span>ONLINE</span>
+				</div>
+			</div>
+			<div class="hero__terminal-body">
+				<div class="hero__terminal-pill">
+					<span>PKT (UTC+5) • Full-Stack / Lead</span>
+					<span class="hero__terminal-badge">Active High-Impact Roles</span>
+				</div>
+				<dl class="hero__terminal-specs">
+					<div>
+						<dt>ARCH_FOCUS</dt>
+						<dd>Distributed SaaS &amp; Workflows</dd>
+					</div>
+					<div>
+						<dt>CODE_COVERAGE</dt>
+						<dd>High Resiliency / Tested E2E</dd>
+					</div>
+					<div>
+						<dt>SYS_UPTIME_REC</dt>
+						<dd class="hero__terminal-accent">99.98% Across Projects</dd>
+					</div>
+					<div>
+						<dt>STACK_MASTERY</dt>
+						<dd class="hero__terminal-primary">TypeScript / Node / Cloud</dd>
+					</div>
+				</dl>
+				<div class="hero__terminal-chart">
+					<div class="hero__terminal-chart-head">
+						<span>Historical Output &amp; Velocity</span>
+						<span class="hero__terminal-accent">PEAK HEALTH</span>
+					</div>
+					<div class="hero__terminal-bars" aria-hidden="true">
+						<span style="--h: 40%"></span>
+						<span style="--h: 65%"></span>
+						<span style="--h: 55%"></span>
+						<span style="--h: 80%"></span>
+						<span style="--h: 70%"></span>
+						<span style="--h: 90%"></span>
+						<span style="--h: 85%"></span>
+						<span style="--h: 100%"></span>
+					</div>
+					<div class="hero__terminal-chart-foot">
+						<span>2015 Foundation</span>
+						<span>2020 Architecture</span>
+						<span>2026 Scale</span>
+					</div>
+				</div>
+			</div>
+		</aside>
+	</div>
+</PageSection>
+
+<style>
+	.hero__grid {
+		display: grid;
+		gap: var(--space-lg);
+		align-items: start;
+	}
+
+	.hero__main {
+		display: flex;
+		flex-direction: column;
+		gap: var(--space-md);
+	}
+
+	.hero__pill {
+		display: inline-flex;
+		align-items: center;
+		gap: var(--space-sm);
+		width: fit-content;
+		max-width: 100%;
+		padding: 0.25rem 0.75rem;
+		background: var(--color-surface-container-low);
+		border: 1px solid var(--color-border-strong);
+		border-radius: var(--radius-full);
+	}
+
+	.hero__pill-dot {
+		flex-shrink: 0;
+		width: 0.375rem;
+		height: 0.375rem;
+		border-radius: var(--radius-full);
+		background: var(--color-primary);
+	}
+
+	.hero__pill-text {
+		font-family: var(--font-mono);
+		font-size: 11px;
+		font-weight: 600;
+		letter-spacing: 0.02em;
+		color: var(--color-text-primary);
+	}
+
+	.hero__eyebrow {
+		margin: 0;
+		letter-spacing: 0.12em;
+	}
+
+	.hero__headline-block {
+		display: flex;
+		flex-direction: column;
+		gap: 0.25rem;
+	}
+
+	.hero__title {
+		margin: 0;
+		font-family: var(--font-display);
+		font-size: clamp(2.25rem, 5vw, 3.5rem);
+		font-weight: 700;
+		line-height: 1.14;
+		letter-spacing: -0.03em;
+		color: var(--color-text-primary);
+	}
+
+	.hero__subtitle {
+		margin: 0;
+		font-family: var(--font-display);
+		font-size: 22px;
+		font-weight: 500;
+		line-height: 30px;
+		color: var(--color-text-secondary);
+	}
+
+	.hero__summary {
+		margin: 0;
+		max-width: 40rem;
+		color: var(--color-text-secondary);
+	}
+
+	.hero__quote {
+		display: flex;
+		align-items: flex-start;
+		gap: 0.75rem;
+		margin: 0;
+		padding: var(--space-md);
+		background: var(--color-surface-container-lowest);
+		border: 1px solid var(--color-border-strong);
+		border-radius: var(--radius-xl);
+		box-shadow: var(--shadow-sm);
+	}
+
+	.hero__quote-icon {
+		flex-shrink: 0;
+		color: var(--color-primary);
+	}
+
+	.hero__quote-text {
+		margin: 0;
+		font-style: italic;
+		font-weight: 500;
+		color: var(--color-text-primary);
+	}
+
+	.hero__actions {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+		gap: var(--space-sm);
+		padding-top: 0.5rem;
+	}
+
+	.hero__talk {
+		border: none;
+		background: transparent;
+		color: var(--color-text-secondary);
+		box-shadow: none;
+	}
+
+	.hero__talk:hover {
+		color: var(--color-primary);
+		background: transparent;
+	}
+
+	.hero__channels {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 1.5rem 1.5rem;
+		padding-top: var(--space-md);
+		border-top: 1px solid var(--color-border);
+	}
+
+	.hero__channels a {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.375rem;
+		font-family: var(--font-mono);
+		font-size: 11px;
+		font-weight: 500;
+		color: var(--color-text-secondary);
+	}
+
+	.hero__channels a:hover {
+		color: var(--color-primary);
+	}
+
+	.hero__channels a :global(svg) {
+		color: var(--color-tertiary);
+	}
+
+	.hero__terminal {
+		overflow: hidden;
+		background: var(--color-surface-container-lowest);
+	}
+
+	.hero__terminal-bar {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: var(--space-sm);
+		padding: 0.75rem 1rem;
+		background: color-mix(in srgb, var(--color-surface-container-high) 60%, transparent);
+		border-bottom: 1px solid var(--color-border-subtle);
+	}
+
+	.hero__terminal-dots {
+		display: flex;
+		align-items: center;
+		gap: 0.5rem;
+		min-width: 0;
+	}
+
+	.hero__terminal-dot {
+		width: 0.75rem;
+		height: 0.75rem;
+		border-radius: var(--radius-full);
+		flex-shrink: 0;
+	}
+
+	.hero__terminal-dot--red {
+		background: #ba1a1a;
+		opacity: 0.7;
+	}
+
+	.hero__terminal-dot--yellow {
+		background: #76dcff;
+	}
+
+	.hero__terminal-dot--green {
+		background: #85f8c4;
+	}
+
+	.hero__terminal-label {
+		margin-left: 0.25rem;
+		font-family: var(--font-mono);
+		font-size: 11px;
+		color: var(--color-text-secondary);
+		white-space: nowrap;
+		overflow: hidden;
+		text-overflow: ellipsis;
+	}
+
+	.hero__terminal-online {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.375rem;
+		padding: 0.125rem 0.5rem;
+		font-family: var(--font-mono);
+		font-size: 11px;
+		font-weight: 600;
+		color: var(--color-tertiary);
+		background: var(--color-surface-container);
+		border: 1px solid var(--color-border);
+		border-radius: var(--radius-sm);
+		flex-shrink: 0;
+	}
+
+	.hero__terminal-online-dot {
+		width: 0.5rem;
+		height: 0.5rem;
+		border-radius: var(--radius-full);
+		background: var(--color-tertiary);
+	}
+
+	.hero__terminal-body {
+		padding: 1.25rem;
+		display: flex;
+		flex-direction: column;
+		gap: var(--space-md);
+		font-family: var(--font-mono);
+		font-size: 11px;
+	}
+
+	.hero__terminal-pill {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+		justify-content: space-between;
+		gap: 0.5rem;
+		padding: 0.625rem;
+		color: var(--color-text-primary);
+		background: var(--color-surface-container-low);
+		border: 1px solid var(--color-border-subtle);
+		border-radius: var(--radius-sm);
+	}
+
+	.hero__terminal-badge {
+		padding: 0.125rem 0.5rem;
+		font-size: 10px;
+		font-weight: 600;
+		letter-spacing: 0.04em;
+		text-transform: uppercase;
+		color: var(--color-tertiary);
+		background: color-mix(in srgb, var(--color-tertiary-fixed) 30%, transparent);
+		border-radius: var(--radius-sm);
+	}
+
+	.hero__terminal-specs {
+		margin: 0;
+		padding-block: var(--space-md);
+		border-block: 1px solid var(--color-border);
+		display: flex;
+		flex-direction: column;
+		gap: 0.5rem;
+	}
+
+	.hero__terminal-specs div {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		gap: var(--space-sm);
+	}
+
+	.hero__terminal-specs dt {
+		color: var(--color-text-muted);
+	}
+
+	.hero__terminal-specs dd {
+		margin: 0;
+		font-weight: 600;
+		color: var(--color-text-primary);
+		text-align: right;
+	}
+
+	.hero__terminal-accent {
+		color: var(--color-tertiary) !important;
+	}
+
+	.hero__terminal-primary {
+		color: var(--color-primary) !important;
+	}
+
+	.hero__terminal-chart-head,
+	.hero__terminal-chart-foot {
+		display: flex;
+		justify-content: space-between;
+		gap: var(--space-sm);
+		font-size: 10px;
+		text-transform: uppercase;
+		letter-spacing: 0.06em;
+		color: var(--color-text-muted);
+	}
+
+	.hero__terminal-bars {
+		display: flex;
+		align-items: flex-end;
+		gap: 0.25rem;
+		height: 4rem;
+		padding: 0.5rem;
+		background: var(--color-surface-container-low);
+		border: 1px solid var(--color-border-subtle);
+		border-radius: var(--radius-lg);
+	}
+
+	.hero__terminal-bars span {
+		flex: 1;
+		height: var(--h);
+		border-radius: 2px;
+		background: color-mix(in srgb, var(--color-primary) 35%, transparent);
+	}
+
+	.hero__terminal-bars span:last-child {
+		background: var(--color-primary-container);
+	}
+
+	@media (min-width: 1024px) {
+		.hero__grid {
+			grid-template-columns: 7fr 5fr;
+			gap: 2rem;
+		}
+	}
+</style>

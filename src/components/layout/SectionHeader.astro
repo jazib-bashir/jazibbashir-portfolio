@@ -1,0 +1,56 @@
+---
+interface Props {
+	label: string;
+	title: string;
+	description?: string;
+	titleId?: string;
+	align?: 'left' | 'split';
+}
+
+const { label, title, description, titleId, align = 'left' } = Astro.props;
+---
+
+<header class:list={['section-header', align === 'split' && 'section-header--split']}>
+	<div class="section-header__main">
+		<p class="label-caps section-header__label">{label}</p>
+		<h2 class="headline-lg section-header__title" id={titleId}>{title}</h2>
+	</div>
+	{description && <p class="section-header__description body-md">{description}</p>}
+</header>
+
+<style>
+	.section-header {
+		display: flex;
+		flex-direction: column;
+		gap: var(--space-sm);
+		margin-bottom: var(--space-xl);
+	}
+
+	.section-header__label {
+		margin: 0;
+		letter-spacing: 0.12em;
+	}
+
+	.section-header__title {
+		margin: 0.25rem 0 0;
+	}
+
+	.section-header__description {
+		margin: 0;
+		max-width: 28rem;
+		color: var(--color-text-secondary);
+	}
+
+	.section-header--split {
+		flex-direction: column;
+		gap: var(--space-md);
+	}
+
+	@media (min-width: 768px) {
+		.section-header--split {
+			flex-direction: row;
+			align-items: flex-end;
+			justify-content: space-between;
+		}
+	}
+</style>

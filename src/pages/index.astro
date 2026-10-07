@@ -1,14 +1,22 @@
 ---
+import About from '../components/about/About.astro';
+import ContactCta from '../components/contact/ContactCta.astro';
+import EducationCertifications from '../components/education/EducationCertifications.astro';
+import ProfessionalExperience from '../components/experience/ProfessionalExperience.astro';
+import TechnicalExpertise from '../components/expertise/TechnicalExpertise.astro';
+import Hero from '../components/hero/Hero.astro';
+import HeroQuickFacts from '../components/hero/HeroQuickFacts.astro';
+import SelectedProjects from '../components/projects/SelectedProjects.astro';
+import MainLayout from '../layouts/MainLayout.astro';
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Jazib Bashir — Portfolio</title>
-	</head>
-	<body>
-		<h1>Jazib Bashir — Portfolio</h1>
-	</body>
-</html>
+<MainLayout>
+	<Hero />
+	<HeroQuickFacts />
+	<SelectedProjects />
+	<TechnicalExpertise />
+	<ProfessionalExperience />
+	<EducationCertifications />
+	<About />
+	<ContactCta />
+</MainLayout>

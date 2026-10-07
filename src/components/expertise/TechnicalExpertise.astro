@@ -1,0 +1,115 @@
+---
+import { skillCategories } from '../../data/skills';
+import PageSection from '../layout/PageSection.astro';
+import SectionHeader from '../layout/SectionHeader.astro';
+import Icons from '../layout/Icons.astro';
+
+const accentMap = {
+	frontend: 'var(--color-primary)',
+	data: 'var(--color-secondary, #006780)',
+	product: 'var(--color-tertiary, #006243)',
+	engineering: 'var(--color-text-muted)',
+};
+---
+
+<PageSection id="skills-section" tone="surface" ariaLabelledby="skills-heading">
+	<SectionHeader
+		label="Technical specifications"
+		title="Technical Expertise"
+		titleId="skills-heading"
+	/>
+
+	<div class="expertise__grid">
+		{skillCategories.map((category) => (
+			<article class="expertise-card card">
+				<div class="expertise-card__head" style={`--accent: ${accentMap[category.icon]}`}>
+					<Icons name={category.icon} />
+					<h3 class="label-caps">{category.title}</h3>
+				</div>
+				{category.items.length > 0 ? (
+					<ul class="expertise-card__list">
+						{category.items.map((item) => (
+							<li>
+								<span class="expertise-card__dot" aria-hidden="true"></span>
+								<span>{item}</span>
+							</li>
+						))}
+					</ul>
+				) : (
+					<p class="expertise-card__placeholder body-sm">Skills list to be added.</p>
+				)}
+			</article>
+		))}
+	</div>
+</PageSection>
+
+<style>
+	.expertise__grid {
+		display: grid;
+		gap: var(--space-lg);
+	}
+
+	.expertise-card {
+		padding: var(--space-lg);
+	}
+
+	.expertise-card__head {
+		display: flex;
+		align-items: center;
+		gap: var(--space-sm);
+		margin-bottom: var(--space-sm);
+		color: var(--accent);
+	}
+
+	.expertise-card__head h3 {
+		margin: 0;
+		color: var(--color-text-primary);
+	}
+
+	.expertise-card__list {
+		margin: 0;
+		padding: 0;
+		list-style: none;
+		display: grid;
+		gap: 0.625rem;
+	}
+
+	.expertise-card__list li {
+		display: flex;
+		align-items: center;
+		gap: var(--space-sm);
+		font-size: 13px;
+		line-height: 20px;
+		color: var(--color-text-primary);
+	}
+
+	.expertise-card__dot {
+		width: 0.375rem;
+		height: 0.375rem;
+		border-radius: var(--radius-full);
+		background: var(--accent);
+		flex-shrink: 0;
+	}
+
+	.expertise-card__placeholder {
+		margin: 0;
+		color: var(--color-text-muted);
+	}
+
+	.body-sm {
+		font-size: 13px;
+		line-height: 20px;
+	}
+
+	@media (min-width: 768px) {
+		.expertise__grid {
+			grid-template-columns: repeat(2, minmax(0, 1fr));
+		}
+	}
+
+	@media (min-width: 1024px) {
+		.expertise__grid {
+			grid-template-columns: repeat(4, minmax(0, 1fr));
+		}
+	}
+</style>

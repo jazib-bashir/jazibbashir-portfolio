@@ -1,0 +1,402 @@
+---
+import { projectSlides } from '../../data/projects';
+import Icons from '../layout/Icons.astro';
+---
+
+<section id="selected-projects" class="projects" aria-labelledby="projects-heading" data-projects-carousel>
+	<div class="page-container projects__inner">
+		<div class="projects__header">
+			<div class="projects__header-main">
+				<p class="label-caps projects__eyebrow">Engineering case studies ———</p>
+				<h2 id="projects-heading" class="projects__title">Selected Projects</h2>
+				<p class="projects__lede body-md">
+					Dominant portfolio showcase across complex operational software, multi-tenant SaaS, and
+					real-time scheduling platforms.
+				</p>
+			</div>
+			<div class="projects__header-controls">
+				<div class="projects__slide-indicator">
+					<span class="projects__slide-label">SLIDE</span>
+					<span class="projects__counter" data-carousel-counter>01 / 02</span>
+				</div>
+				<div class="projects__nav">
+					<button type="button" class="projects__nav-btn" data-carousel-prev aria-label="Previous slide">
+						<Icons name="arrow-left" />
+					</button>
+					<button type="button" class="projects__nav-btn" data-carousel-next aria-label="Next slide">
+						<Icons name="arrow-right" />
+					</button>
+				</div>
+			</div>
+		</div>
+
+		<div class="projects__viewport">
+			<div class="projects__track" data-carousel-track>
+				{projectSlides.map((slideProjects) => (
+					<div class="projects__slide" data-carousel-slide>
+						{slideProjects.map((project) => (
+							<article class="project-card">
+								<div class="project-card__media">
+									<img src={project.primaryImage} alt="" loading="lazy" width="1200" height="640" />
+									<span class="project-card__image-badge">{project.imageBadge}</span>
+								</div>
+								<div class="project-card__body">
+									<div class="project-card__meta">
+										<span class:list={['project-card__category', `project-card__category--${project.categoryBadgeClass ?? 'primary'}`]}>
+											{project.category}
+										</span>
+										<span class="project-card__role">{project.role}</span>
+									</div>
+									<h3 class="project-card__name">{project.name}</h3>
+									<p class="project-card__description body-md">{project.shortDescription}</p>
+									{project.technologies.length > 0 && (
+										<div class="project-card__tags">
+											{project.technologies.map((tech) => (
+												<span class="project-card__tag">{tech}</span>
+											))}
+										</div>
+									)}
+								</div>
+								<div class="project-card__footer">
+									<span class="project-card__footer-label">{project.footerLabel}</span>
+									<a class="project-card__cta" href={`/projects/${project.slug}`}>
+										View Project
+										<Icons name="arrow-right" />
+									</a>
+								</div>
+							</article>
+						))}
+					</div>
+				))}
+			</div>
+		</div>
+	</div>
+</section>
+
+<style>
+	.projects {
+		width: 100%;
+		background: var(--color-canvas);
+		border-bottom: 1px solid var(--color-border-subtle);
+		padding-block: var(--space-xl);
+		color: var(--color-text-secondary);
+	}
+
+	.projects__inner {
+		display: flex;
+		flex-direction: column;
+		gap: var(--space-lg);
+	}
+
+	.projects__header {
+		display: flex;
+		flex-direction: column;
+		gap: var(--space-md);
+	}
+
+	.projects__eyebrow {
+		letter-spacing: 0.12em;
+	}
+
+	.projects__title {
+		margin: 0.25rem 0 0;
+		font-family: var(--font-display);
+		font-size: clamp(1.75rem, 3vw, 2.5rem);
+		font-weight: 600;
+		line-height: 1.2;
+		letter-spacing: -0.025em;
+		color: var(--color-text-primary);
+	}
+
+	.projects__lede {
+		margin: var(--space-sm) 0 0;
+		max-width: 42rem;
+	}
+
+	.projects__header-controls {
+		display: flex;
+		align-items: center;
+		gap: 0.75rem;
+	}
+
+	.projects__slide-indicator {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.5rem;
+		padding: 0.375rem 0.75rem;
+		background: var(--color-surface-container);
+		border: 1px solid var(--color-border);
+		border-radius: var(--radius-lg);
+	}
+
+	.projects__slide-label {
+		font-family: var(--font-mono);
+		font-size: 11px;
+		color: var(--color-text-muted);
+	}
+
+	.projects__counter {
+		font-family: var(--font-mono);
+		font-size: 13px;
+		font-weight: 600;
+		color: var(--color-text-primary);
+	}
+
+	.projects__nav {
+		display: flex;
+		gap: 0.375rem;
+	}
+
+	.projects__nav-btn {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		width: 2.5rem;
+		height: 2.5rem;
+		color: var(--color-text-primary);
+		background: var(--color-surface-container-lowest);
+		border: 1px solid var(--color-border);
+		border-radius: var(--radius-lg);
+		box-shadow: var(--shadow-sm);
+		transition:
+			background-color var(--transition-fast),
+			color var(--transition-fast);
+	}
+
+	.projects__nav-btn:hover:not(:disabled) {
+		background: var(--color-surface-container);
+		color: var(--color-primary);
+	}
+
+	.projects__nav-btn:disabled {
+		opacity: 0.45;
+		cursor: not-allowed;
+	}
+
+	.projects__viewport {
+		overflow: hidden;
+		width: 100%;
+	}
+
+	.projects__track {
+		display: flex;
+		width: 100%;
+		transition: transform 500ms ease;
+	}
+
+	.projects__slide {
+		flex: 0 0 100%;
+		display: grid;
+		grid-template-columns: 1fr;
+		gap: var(--gutter);
+		min-width: 0;
+	}
+
+	.project-card {
+		display: flex;
+		flex-direction: column;
+		background: var(--color-surface-container-lowest);
+		border: 1px solid var(--color-border-strong);
+		border-radius: var(--radius-lg);
+		box-shadow: var(--shadow-sm);
+		overflow: hidden;
+		transition:
+			transform var(--transition-base),
+			box-shadow var(--transition-base);
+	}
+
+	.project-card:hover {
+		transform: translateY(-2px);
+		box-shadow: var(--shadow-md);
+	}
+
+	.project-card__media {
+		position: relative;
+		height: 14rem;
+		background: var(--color-surface-container);
+		border-bottom: 1px solid var(--color-border-subtle);
+		overflow: hidden;
+	}
+
+	.project-card__media img {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		object-position: top;
+		transition: transform 300ms ease;
+	}
+
+	.project-card:hover .project-card__media img {
+		transform: scale(1.02);
+	}
+
+	.project-card__image-badge {
+		position: absolute;
+		top: 0.75rem;
+		left: 0.75rem;
+		padding: 0.25rem 0.625rem;
+		font-family: var(--font-mono);
+		font-size: 11px;
+		font-weight: 600;
+		color: var(--color-primary);
+		background: color-mix(in srgb, var(--color-surface-container-lowest) 90%, transparent);
+		border: 1px solid var(--color-border);
+		border-radius: var(--radius-md);
+		backdrop-filter: blur(6px);
+	}
+
+	.project-card__body {
+		display: flex;
+		flex-direction: column;
+		flex: 1;
+		gap: var(--space-sm);
+		padding: 1.5rem 2rem;
+	}
+
+	.project-card__meta {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: var(--space-sm);
+		margin-bottom: 0.25rem;
+	}
+
+	.project-card__category {
+		padding: 0.125rem 0.625rem;
+		font-family: var(--font-mono);
+		font-size: 11px;
+		font-weight: 700;
+		letter-spacing: 0.04em;
+		text-transform: uppercase;
+		border-radius: var(--radius-sm);
+	}
+
+	.project-card__category--primary {
+		color: var(--color-primary);
+		background: var(--color-surface-container);
+	}
+
+	.project-card__category--secondary {
+		color: var(--color-secondary);
+		background: color-mix(in srgb, var(--color-secondary-fixed) 40%, transparent);
+	}
+
+	.project-card__category--tertiary {
+		color: var(--color-tertiary);
+		background: color-mix(in srgb, var(--color-tertiary-fixed) 30%, transparent);
+	}
+
+	.project-card__role {
+		font-family: var(--font-mono);
+		font-size: 11px;
+		font-weight: 500;
+		color: var(--color-text-secondary);
+	}
+
+	.project-card__name {
+		margin: 0;
+		font-family: var(--font-display);
+		font-size: 1.75rem;
+		font-weight: 700;
+		line-height: 1.25;
+		color: var(--color-text-primary);
+	}
+
+	.project-card:hover .project-card__name {
+		color: var(--color-primary);
+	}
+
+	.project-card__description {
+		margin: 0 0 var(--space-md);
+		flex: 1;
+	}
+
+	.project-card__tags {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.375rem;
+	}
+
+	.project-card__tag {
+		padding: 0.25rem 0.625rem;
+		font-family: var(--font-mono);
+		font-size: 11px;
+		color: var(--color-text-primary);
+		background: var(--color-surface-container);
+		border-radius: var(--radius-sm);
+	}
+
+	.project-card__footer {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: var(--space-md);
+		padding: 1rem 2rem;
+		background: color-mix(in srgb, var(--color-surface-container-low) 50%, transparent);
+		border-top: 1px solid var(--color-border-subtle);
+	}
+
+	.project-card__footer-label {
+		font-family: var(--font-mono);
+		font-size: 11px;
+		color: var(--color-text-secondary);
+	}
+
+	.project-card__cta {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.375rem;
+		font-size: 13px;
+		font-weight: 600;
+		color: var(--color-primary);
+	}
+
+	html[data-theme='dark'] .projects__nav-btn {
+		box-shadow: none;
+		background: var(--color-surface-container);
+	}
+
+	html[data-theme='dark'] .project-card__category--primary {
+		color: var(--color-primary);
+		background: var(--color-surface-container-high);
+	}
+
+	html[data-theme='dark'] .project-card__category--secondary {
+		color: var(--color-secondary);
+		background: color-mix(in srgb, var(--color-secondary) 12%, var(--color-surface-container-high));
+	}
+
+	html[data-theme='dark'] .project-card__category--tertiary {
+		color: var(--color-tertiary);
+		background: color-mix(in srgb, var(--color-tertiary) 12%, var(--color-surface-container-high));
+	}
+
+	html[data-theme='dark'] .project-card__image-badge {
+		background: color-mix(in srgb, var(--color-surface-container-lowest) 88%, transparent);
+	}
+
+	html[data-theme='dark'] .project-card__tag {
+		background: var(--color-surface-container-high);
+		color: var(--color-text-secondary);
+	}
+
+	@media (min-width: 768px) {
+		.projects {
+			padding-block: var(--space-2xl);
+		}
+
+		.projects__header {
+			flex-direction: row;
+			align-items: flex-end;
+			justify-content: space-between;
+		}
+
+		.projects__slide {
+			grid-template-columns: repeat(2, minmax(0, 1fr));
+		}
+
+		.project-card__media {
+			height: 16rem;
+		}
+	}
+</style>

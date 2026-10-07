@@ -1,0 +1,82 @@
+---
+import { certifications, education } from '../../data/education';
+import PageSection from '../layout/PageSection.astro';
+import SectionHeader from '../layout/SectionHeader.astro';
+---
+
+<PageSection tone="surface" ariaLabelledby="education-heading">
+	<SectionHeader label="Credentials" title="Education & Certifications" titleId="education-heading" />
+
+	<div class="education__grid">
+		<div class="education__column">
+			<h3 class="headline-sm education__column-title">Education</h3>
+			<div class="education__list">
+				{education.map((entry) => (
+					<article class="education-card card card--elevated">
+						<p class="label-caps">{entry.period}</p>
+						<h4 class="headline-sm">{entry.title}</h4>
+						<p class="education-card__institution">{entry.institution}</p>
+						<p class="body-md">{entry.detail}</p>
+					</article>
+				))}
+			</div>
+		</div>
+
+		<div class="education__column">
+			<h3 class="headline-sm education__column-title">Certifications</h3>
+			<div class="education__list">
+				{certifications.map((entry) => (
+					<article class="education-card card card--elevated">
+						<p class="label-caps">{entry.year}</p>
+						<h4 class="headline-sm">{entry.name}</h4>
+						<p class="education-card__institution">{entry.issuer}</p>
+					</article>
+				))}
+			</div>
+		</div>
+	</div>
+</PageSection>
+
+<style>
+	.education__grid {
+		display: grid;
+		gap: var(--space-xl);
+	}
+
+	.education__column-title {
+		margin: 0 0 var(--space-lg);
+	}
+
+	.education__list {
+		display: grid;
+		gap: var(--space-md);
+	}
+
+	.education-card {
+		padding: var(--space-lg);
+		background: var(--color-surface-container-lowest);
+	}
+
+	.education-card h4 {
+		margin: var(--space-sm) 0;
+	}
+
+	.education-card__institution {
+		margin: 0 0 var(--space-md);
+		font-family: var(--font-mono);
+		font-size: 11px;
+		font-weight: 500;
+		color: var(--color-text-muted);
+	}
+
+	.education-card p:last-child {
+		margin: 0;
+		color: var(--color-text-secondary);
+	}
+
+	@media (min-width: 1024px) {
+		.education__grid {
+			grid-template-columns: repeat(2, minmax(0, 1fr));
+		}
+	}
+</style>

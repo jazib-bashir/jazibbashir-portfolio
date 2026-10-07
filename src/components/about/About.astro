@@ -1,0 +1,25 @@
+---
+import { about } from '../../data/about';
+import PageSection from '../layout/PageSection.astro';
+import SectionHeader from '../layout/SectionHeader.astro';
+---
+
+<PageSection id="ethos-section" tone="canvas" ariaLabelledby="about-heading">
+	<SectionHeader label="Profile" title="About" titleId="about-heading" />
+	<article class="about__card card card--elevated">
+		<p class="body-lg">{about.summary}</p>
+	</article>
+</PageSection>
+
+<style>
+	.about__card {
+		padding: var(--space-lg);
+		max-width: 48rem;
+		background: var(--color-surface-container-lowest);
+	}
+
+	.about__card p {
+		margin: 0;
+		color: var(--color-text-secondary);
+	}
+</style>

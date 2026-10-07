@@ -1,0 +1,72 @@
+---
+import { experience } from '../../data/experience';
+import PageSection from '../layout/PageSection.astro';
+import SectionHeader from '../layout/SectionHeader.astro';
+---
+
+<PageSection id="experience-section" tone="canvas" ariaLabelledby="experience-heading">
+	<SectionHeader label="Career history" title="Professional Experience" titleId="experience-heading" />
+
+	<div class="experience__list">
+		{experience.map((entry) => (
+			<article class="experience-card card card--elevated">
+				<div class="experience-card__header">
+					<div>
+						<h3 class="headline-sm">{entry.role}</h3>
+						<p class="experience-card__org">{entry.organization}</p>
+					</div>
+					<p class="experience-card__period">{entry.period}</p>
+				</div>
+				<p class="body-md">{entry.summary}</p>
+			</article>
+		))}
+	</div>
+</PageSection>
+
+<style>
+	.experience__list {
+		display: grid;
+		gap: var(--space-md);
+	}
+
+	.experience-card {
+		padding: var(--space-lg);
+		background: var(--color-surface-container-lowest);
+	}
+
+	.experience-card__header {
+		display: flex;
+		flex-direction: column;
+		gap: var(--space-sm);
+		margin-bottom: var(--space-md);
+	}
+
+	.experience-card__org {
+		margin: 0.25rem 0 0;
+		font-family: var(--font-mono);
+		font-size: 11px;
+		font-weight: 500;
+		color: var(--color-primary);
+	}
+
+	.experience-card__period {
+		margin: 0;
+		font-family: var(--font-mono);
+		font-size: 11px;
+		font-weight: 500;
+		color: var(--color-text-muted);
+	}
+
+	.experience-card p:last-child {
+		margin: 0;
+		color: var(--color-text-secondary);
+	}
+
+	@media (min-width: 768px) {
+		.experience-card__header {
+			flex-direction: row;
+			align-items: flex-start;
+			justify-content: space-between;
+		}
+	}
+</style>
