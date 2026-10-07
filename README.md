@@ -23,4 +23,12 @@ npm run preview
 
 ## Deployment
 
-Pushes to the `main` branch build the site and deploy to GitHub Pages via GitHub Actions. In the repository settings, set **Pages** source to **GitHub Actions**. The site is configured for the custom domain `jazibbashir.com` (DNS not included in this repo).
+Pushes to `main` run `.github/workflows/deploy.yml`, which builds with Astro and deploys via the official `upload-pages-artifact` / `deploy-pages` flow.
+
+**One-time repository setup (required):** If the deploy job fails with `Failed to create deployment (status: 404)`, GitHub Pages is not enabled for Actions deploys yet.
+
+1. Open [Repository Settings → Pages](https://github.com/jazib-bashir/jazibbashir-portfolio/settings/pages).
+2. Under **Build and deployment**, set **Source** to **GitHub Actions** (not “Deploy from a branch”).
+3. Re-run the latest **Deploy to GitHub Pages** workflow from the Actions tab.
+
+Custom domain: `public/CNAME` contains `jazibbashir.com`. After the first successful deploy, confirm the domain under **Pages → Custom domain** and configure DNS at your registrar (not in this repo).
