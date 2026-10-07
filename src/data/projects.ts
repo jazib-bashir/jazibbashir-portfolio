@@ -116,179 +116,293 @@ export const projects: Project[] = [
 		category: 'Enterprise Operations Platform',
 		categoryBadgeClass: 'primary',
 		shortDescription:
-			'School transportation operations platform covering registrations, students, trips, routes, scheduling and fleet operations.',
+			'School transportation operations platform covering school registrations, student management, trip operations, route planning, scheduling and fleet workflows.',
 		role: 'Senior Frontend Engineer',
 		technologies: ['React', 'Next.js', 'TypeScript', 'Material UI', 'GraphQL'],
-		primaryImage:
-			'https://lh3.googleusercontent.com/aida/AEtjO1W6d_SNjmYWuSbPOYEu_0o5lR4XWqpIOnfB0cnzJLoKF0_Ck9LD6qQTAYSgKVGJQuxohj0ExtSFHjtGOUOWnJjHxhlywe-tPpnTvc-95UwYOBI-YQC_-SMDMHNbpkQXlY4mdNtDzH2pHKnYRuQGSqfCL-GStpxImRoRMMHYgdy6R-YpA3zty6zzdBgiMoLa7z816_1xHo10X1mv7NbM0nFNSz7Sj7vNry36HtUnGVwcfA',
+		primaryImage: '/images/projects/saar/01-school-registrations.png',
 		imageBadge: 'eMushrif Fleet Ops',
 		footerLabel: 'Fleet Infrastructure',
 		caseId: 'SAAR // EMUSHRIF',
 		heroDescription:
-			'An enterprise school transportation operations platform covering registrations, students, trips, routes, and live fleet management.',
-		overviewTitle: 'District-Scale Transport Logistics',
+			'A school transportation operations platform used to manage schools, students, registrations, trips, routes, scheduling and fleet operations.',
+		overviewTitle: 'Project Overview',
 		overviewBody:
-			'Saar by eMushrif is an enterprise logistics and school transportation operations platform engineered to manage regional fleet dispatching, student safety tracking, route calculation, and multi-school administrative workflows across thousands of daily journeys.',
-		roleContributionTitle: 'Core UI Architecture & Real-Time Systems',
+			'Saar is an enterprise school transportation platform with operational workflows spanning school management, student transportation, route planning, trip monitoring and fleet operations.\n\nI worked primarily across the frontend using React, Next.js, TypeScript, Material UI and GraphQL, building complex workflows, reusable interfaces and real-time operational experiences.',
+		roleContributionTitle: 'Senior Frontend Engineering Across Operational Workflows',
 		roleContributionBody:
-			'Engineered core web application modules across student route assignments, live fleet dispatching, and school registration. Built high-performance data tables with virtualized scrolling, integrated GraphQL subscriptions for real-time tracking, and implemented responsive Google Maps interfaces for route planning.',
+			'As a Senior Frontend Engineer, I worked across multiple operational areas of Saar, owning and significantly contributing to complex frontend workflows. My work included school registrations, student management, trip operations, route planning, scheduling, fleet interfaces and shared UI infrastructure. I worked with GraphQL APIs, real-time subscriptions, maps, complex application state, role-based access, feature flags and major UI library upgrades.',
 		contributionsIntro:
-			'Core production modules and user interfaces engineered for multi-district scale operations.',
+			'Selected frontend modules and workflows across school transportation operations.',
 		contributions: [
 			{
 				module: 'MODULE 01',
 				icon: 'register',
 				title: 'School Registration Workflows',
 				description:
-					'Architected multi-step registration flows and bulk student onboarding interfaces with validation logic.',
+					'Built and enhanced school registration workflows including eligibility, registration actions, academic-year handling, validation and operational data flows.',
 			},
 			{
 				module: 'MODULE 02',
 				icon: 'group',
 				title: 'Student Management',
 				description:
-					'Built high-density data tables with multi-criteria filtering, student attendance records, and batch status assignment.',
+					'Built and maintained student management interfaces covering student profiles, school assignments, transportation details, routes and parent/guardian relationships.',
 			},
 			{
 				module: 'MODULE 03',
 				icon: 'route',
-				title: 'Route Planning & Map Interactions',
+				title: 'Route Planning & Optimization',
 				description:
-					'Engineered waypoint route calculation UI, pickup/drop-off sequence ordering, and interactive polyline rendering via Google Maps.',
+					'Contributed significantly to route planning workflows including map-based interactions, route filtering, stop management, optimizer configuration and safeguards around route regeneration.',
 			},
 			{
 				module: 'MODULE 04',
 				icon: 'radar',
-				title: 'Live Fleet Tracking',
+				title: 'Trip Operations & Fleet',
 				description:
-					'Implemented real-time bus location tracking with geofencing boundaries, speed telemetry badges, and live dispatch alerts.',
+					'Worked on operational trip interfaces and the fleet live-location experience, including map views, vehicle data and real-time updates.',
 			},
 			{
 				module: 'MODULE 05',
 				icon: 'calendar',
 				title: 'Scheduling & Schedule Groups',
 				description:
-					'Developed morning and afternoon transit shift planners, recurring calendar patterns, and driver assignment workflows.',
+					'Owned frontend workflows for semester and schedule-group management, including drag-and-drop scheduling, search, validation and GraphQL mutations.',
 			},
 			{
 				module: 'MODULE 06',
-				icon: 'sync',
-				title: 'GraphQL & Realtime UI Workflows',
+				icon: 'settings',
+				title: 'Frontend Platform Improvements',
 				description:
-					'Connected Apollo Client subscriptions and optimistic UI caching to handle high-frequency vehicle telemetry without UI jank.',
+					'Contributed to reusable table infrastructure, MUI X upgrades, feature flags, role-based UI behavior, image uploads, CSV exports and production fixes.',
 			},
 		],
 		gallery: [
 			{
-				image:
-					'https://lh3.googleusercontent.com/aida/AEtjO1W6d_SNjmYWuSbPOYEu_0o5lR4XWqpIOnfB0cnzJLoKF0_Ck9LD6qQTAYSgKVGJQuxohj0ExtSFHjtGOUOWnJjHxhlywe-tPpnTvc-95UwYOBI-YQC_-SMDMHNbpkQXlY4mdNtDzH2pHKnYRuQGSqfCL-GStpxImRoRMMHYgdy6R-YpA3zty6zzdBgiMoLa7z816_1xHo10X1mv7NbM0nFNSz7Sj7vNry36HtUnGVwcfA',
-				alt: 'Saar by eMushrif student route assignments screen with high-density data grid',
-				tag: '01 — SCHOOL REGISTRATION',
-				title: 'School Registration & Student Route Assignments',
-				description:
-					'High-density operational data grid with batch assignments, search, and live route status.',
-				thumbCode: '01 — School Registration',
-				thumbTitle: 'Route Assignments',
+				image: '/images/projects/saar/01-school-registrations.png',
+				alt: 'Saar school registration and workflow management dashboard',
+				tag: '01 — SCHOOL REGISTRATIONS',
+				title: 'School Registrations',
+				description: 'School registration and workflow management dashboard.',
+				thumbCode: '01 — School Registrations',
+				thumbTitle: 'School Registrations',
 			},
 			{
-				image:
-					'https://lh3.googleusercontent.com/aida-public/AB6AXuDmmIYby8PyQIj8cEXaeVKFoUCqU0h2SCv7mpxkv15zGcCfAEjkWW8q6l743VTxO8Oen00B_kwBpfzfPqz9R6G6vrxR4WUDgFyqNJNS-q3HhhTzoKL1cPP7XhDwGicITSyCeTjkg8qsaVxzddvxznBViFcbXdJ7k6Bm9e4-Im0wp276FEhkUpoLVvLOtEtzoIPbUnyD58paFD5bir7-rmXZAJO-R6Q31TN4kyRe9ABF',
-				alt: 'Trips operations dashboard',
+				image: '/images/projects/saar/02-trips-operations.png',
+				alt: 'Saar trips operations dashboard',
 				tag: '02 — TRIPS OPERATIONS',
-				title: 'Trips Operations & Fleet Dispatch Schedule',
+				title: 'Trips Operations',
 				description:
-					'Live trip monitoring Gantt timelines, driver check-in verifications, and progress flags.',
+					'Operational trip dashboard showing trip status, live tracking, routes and student transportation activity.',
 				thumbCode: '02 — Trips Operations',
-				thumbTitle: 'Dispatch & Shifts',
+				thumbTitle: 'Trips Operations',
 			},
 			{
-				image:
-					'https://lh3.googleusercontent.com/aida-public/AB6AXuBsTpabOstbZku4KdG30-K2uffl21QM2V34O7wOK61GMAMxG2gOCIrw1-MTNHAaqR8UgzyIktvrSNAW9IN7-zee11cVyWn9v63nOWtfRnFai99xUihh0MxPwY4liHjX24ArZe2tMcmpeqEru8hTOVuDQP54B22WHf2bLljVvdoH5o71PAZR0Atr3P69PrOzB0grBhavJWr1hy3c8RplqF23ABPv8nzwk8Ahq04eskPi',
-				alt: 'Google Maps route path optimization view',
+				image: '/images/projects/saar/03-route-planning.png',
+				alt: 'Saar route planning and optimization interface',
 				tag: '03 — ROUTE PLANNING',
-				title: 'Dynamic Multi-Stop Route Path Optimization',
+				title: 'Route Planning & Optimization',
 				description:
-					'Interactive Google Maps polyline routing with sequenced student pickup waypoints.',
+					'Route planning interface with map-based route management, stop sequencing and optimization workflows.',
 				thumbCode: '03 — Route Planning',
-				thumbTitle: 'Map & Stops',
+				thumbTitle: 'Route Planning & Optimization',
 			},
 			{
-				image:
-					'https://lh3.googleusercontent.com/aida-public/AB6AXuDXHUgWvvYxMOOESZZz3z-ae8pKo6sWvKphng8P1VN5MWJtywVr7nxvCmjUtVofv4V7WP-CNYsnzfUC5h-ZpnxtqwNsB6Hg3xYcYNmjG2wqL5DO6-c5j0Mza3SAzG53Vv0BzrQmJhOAAM2ZaATS5o7rrSMMXoSFatNLtl4zCWKjLpJF-jvJ9aL2DDMujrhzUoLlFuhqscZ2iHx4tV1E-GEsOVeo65RRwNPmUXLzueJe',
-				alt: 'Student roster and guardian directory records',
-				tag: '04 — STUDENTS MANAGEMENT',
-				title: 'Student Roster & Guardian Records Directory',
+				image: '/images/projects/saar/04-student-management.png',
+				alt: 'Saar student management dashboard',
+				tag: '04 — STUDENT MANAGEMENT',
+				title: 'Student Management',
 				description:
-					'Verified student records with emergency contact linkage, school mapping, and transit safety logs.',
-				thumbCode: '04 — Students Management',
-				thumbTitle: 'Roster & Guardians',
+					'Student management dashboard covering profiles, school assignments, transportation details and parent or guardian information.',
+				thumbCode: '04 — Student Management',
+				thumbTitle: 'Student Management',
 			},
 			{
-				image:
-					'https://lh3.googleusercontent.com/aida-public/AB6AXuBM2tsyYJWxSQ78_QOY8OkPFeG37pILwIZ6HjAWSR8laRq8QiwOhMKg3T3ZZFob06N7oom7v-GbYiWIL-Njp0r6kXxqiyBldQ20GfhLioPIBAcG6NcNtaCoCVARm_375CpEJxlgDz_HNeRgLPCx-kN7cNQmjcIkpIXx5lFSGZ5KWxPEhdV8t2pDnSTr5D8pbI6BhHb1RmtRNVZVEG2_6FS9FmT2HE5pclZaZ30RMJX2',
-				alt: 'Frontend architecture and system data flow',
-				tag: '05 — ARCHITECTURE',
-				title: 'System Topology & Frontend Architecture Tree',
+				image: '/images/projects/saar/05-platform-architecture.png',
+				alt: 'Saar platform architecture overview diagram',
+				tag: '05 — PLATFORM ARCHITECTURE',
+				title: 'Platform Architecture',
 				description:
-					'Modular Next.js component directory structure, Apollo cache layers, and event subscriptions.',
-				thumbCode: '05 — Architecture',
-				thumbTitle: 'System Topology',
+					'High-level Saar platform architecture and application components. Platform context overview — not personal ownership of the full backend or infrastructure shown.',
+				thumbCode: '05 — Platform Architecture',
+				thumbTitle: 'Platform Architecture',
 			},
 		],
 		technicalHighlights: [
 			{
-				label: 'FRONTEND',
-				icon: 'web',
-				accent: 'primary',
-				items: ['React', 'Next.js', 'TypeScript', 'Material UI'],
-			},
-			{
-				label: 'DATA & API',
+				label: 'GRAPHQL & REAL-TIME UI',
 				icon: 'database',
 				accent: 'secondary',
-				items: ['GraphQL', 'Apollo Client', 'GraphQL Subscriptions', 'In-Memory Cache'],
+				description: 'GraphQL-powered frontend workflows with subscriptions for live operational updates.',
+				items: ['GraphQL', 'Subscriptions', 'Apollo Client'],
 			},
 			{
-				label: 'INTERACTION',
+				label: 'MAPS & OPERATIONAL INTERFACES',
 				icon: 'touch',
 				accent: 'tertiary',
-				items: ['Google Maps Platform', 'Real-time Updates', 'Complex Forms', 'Route Polylines'],
+				description:
+					'Complex map-based workflows for fleet tracking, route planning and transportation operations.',
+				items: ['Map Views', 'Route Planning', 'Fleet Operations'],
 			},
 			{
-				label: 'ENGINEERING',
+				label: 'REUSABLE FRONTEND SYSTEMS',
+				icon: 'web',
+				accent: 'primary',
+				description:
+					'Reusable tables, forms, filters, dialogs and shared operational components across multiple modules.',
+				items: ['Data Grids', 'Shared Forms', 'Operational UI'],
+			},
+			{
+				label: 'LARGE UI LIBRARY UPGRADES',
 				icon: 'settings',
 				accent: 'engineering',
-				items: [
-					'Feature Flags',
-					'Reusable Component Library',
-					'UI Virtualization',
-					'Production Stability',
-				],
+				description:
+					'Major Material UI / MUI X upgrades including Data Grid and Date Picker migrations.',
+				items: ['Material UI', 'MUI X', 'Data Grid'],
 			},
 		],
 	},
 	{
 		slug: 'opensend',
 		name: 'OpenSend',
-		category: 'B2B SaaS / CDP',
+		category: 'B2B SaaS / Customer Data Platform',
 		categoryBadgeClass: 'secondary',
 		shortDescription:
-			'Multi-tenant SaaS platform for identity resolution, customer data and marketing-platform integrations with admin and billing workflows.',
-		role: 'Full-Stack Engineer',
-		technologies: ['React', 'TypeScript', 'Node.js', 'Express', 'Prisma', 'PostgreSQL', 'Stripe'],
-		primaryImage: '/images/projects/placeholder.svg',
+			'Multi-tenant SaaS platform for customer identity resolution, data activation, marketing integrations and subscription billing.',
+		role: 'Full Stack Engineer',
+		technologies: ['React', 'Node.js', 'Express', 'PostgreSQL', 'Stripe'],
+		primaryImage: '/images/projects/opensend/01-subscription-extension.png',
 		imageBadge: 'B2B SaaS / CDP',
 		footerLabel: 'Identity Resolution & CDP',
-		caseId: 'OPENSEND // CASE',
-		heroDescription: 'Case study content to be added.',
-		overviewTitle: 'Project overview to be added.',
-		overviewBody: 'Overview content to be added.',
-		roleContributionTitle: 'Role and contribution to be added.',
-		roleContributionBody: 'Contribution details to be added.',
-		contributionsIntro: 'Verified scope to be documented.',
-		contributions: Array.from({ length: 6 }, (_, i) => placeholderContribution(i + 1)),
-		gallery: placeholderGallery({ name: 'OpenSend', primaryImage: '/images/projects/placeholder.svg' }),
-		technicalHighlights: placeholderTech(),
+		caseId: 'OPENSEND // SAAS',
+		heroDescription:
+			'A multi-tenant SaaS platform that resolves customer identities, manages customer data, connects marketing platforms and handles subscription and billing workflows for online stores.',
+		overviewTitle: 'Project Overview',
+		overviewBody:
+			'OpenSend is a B2B SaaS platform for online stores that combines customer identity resolution, customer data management, marketing activation and subscription billing.\n\nI worked across both the React frontend and Node.js backend, delivering production features involving subscription lifecycle management, billing, Stripe payments, receipt generation, onboarding and third-party integrations.',
+		roleContributionTitle: 'Full Stack Engineering Across Subscription & Billing',
+		roleContributionBody:
+			'I worked as a Full Stack Engineer across the React frontend and Node.js backend, contributing to production features in subscription management, billing, customer onboarding and third-party integrations. My strongest work involved extending subscription plans, handling billing lifecycle workflows, generating and storing Stripe receipts, improving onboarding flows and integrating external business services.',
+		contributionsIntro:
+			'Selected production features across subscription, billing and integration workflows.',
+		contributions: [
+			{
+				module: 'MODULE 01',
+				icon: 'calendar',
+				title: 'Subscription Plan Extension',
+				description:
+					'Built the plan-extension workflow allowing administrators to extend an active subscription while handling billing-cycle dates, duration rules and subscription state.',
+			},
+			{
+				module: 'MODULE 02',
+				icon: 'download',
+				title: 'Stripe Receipt Generation',
+				description:
+					'Implemented PDF receipt generation for Stripe transactions using Puppeteer and added secure receipt storage in AWS S3.',
+			},
+			{
+				module: 'MODULE 03',
+				icon: 'mail',
+				title: 'Subscription Lifecycle Emails',
+				description:
+					'Worked on automated subscription and billing emails covering events such as payment failures, plan changes, renewals and subscription lifecycle changes.',
+			},
+			{
+				module: 'MODULE 04',
+				icon: 'register',
+				title: 'Onboarding & Plan Preview',
+				description:
+					'Built the onboarding plan-preview experience allowing customers to review plan information during the onboarding flow.',
+			},
+			{
+				module: 'MODULE 05',
+				icon: 'sync',
+				title: 'Third-Party Integrations',
+				description:
+					'Worked with external services including PartnerStack and Shopify as part of customer, referral and store-management workflows.',
+			},
+			{
+				module: 'MODULE 06',
+				icon: 'engineering',
+				title: 'Full-Stack Production Delivery',
+				description:
+					'Delivered features across React, Redux-Saga, Node.js, Express, Prisma and PostgreSQL, working through both frontend workflows and backend APIs.',
+			},
+		],
+		gallery: [
+			{
+				image: '/images/projects/opensend/01-subscription-extension.png',
+				alt: 'OpenSend subscription plan extension interface',
+				tag: '01 — SUBSCRIPTION EXTENSION',
+				title: 'Subscription Plan Extension',
+				description:
+					'Admin subscription management interface for extending an active plan and calculating the new subscription period.',
+				thumbCode: '01 — Subscription Extension',
+				thumbTitle: 'Subscription Plan Extension',
+			},
+			{
+				image: '/images/projects/opensend/02-analytics.png',
+				alt: 'OpenSend customer data and analytics dashboard',
+				tag: '02 — ANALYTICS',
+				title: 'Customer Data & Analytics',
+				description:
+					'OpenSend customer data and analytics dashboard showing resolved identities, email activity, revenue and customer engagement metrics. Product context overview — not personal ownership of the entire analytics system.',
+				thumbCode: '02 — Customer Data & Analytics',
+				thumbTitle: 'Customer Data & Analytics',
+			},
+			{
+				image: '/images/projects/opensend/03-billing-receipts.png',
+				alt: 'OpenSend billing and receipt generation workflow',
+				tag: '03 — BILLING & RECEIPTS',
+				title: 'Billing & Receipt Generation',
+				description:
+					'Billing workflow showing subscription invoices, Stripe payment processing, PDF receipt generation and AWS S3 receipt storage.',
+				thumbCode: '03 — Billing & Receipts',
+				thumbTitle: 'Billing & Receipt Generation',
+			},
+			{
+				image: '/images/projects/opensend/04-integrations-lifecycle.png',
+				alt: 'OpenSend integrations and lifecycle dashboard',
+				tag: '04 — INTEGRATIONS',
+				title: 'Integrations & Lifecycle',
+				description:
+					'Customer data activation workflow connecting store events and customer data with external marketing platforms and subscription lifecycle events. Platform context — not ownership of the full identity-resolution or integration platform.',
+				thumbCode: '04 — Integrations & Lifecycle',
+				thumbTitle: 'Integrations & Lifecycle',
+			},
+		],
+		technicalHighlights: [
+			{
+				label: 'FRONTEND ENGINEERING',
+				icon: 'web',
+				accent: 'primary',
+				items: ['React', 'Redux Toolkit', 'Redux-Saga', 'Ant Design', 'Formik / Yup'],
+			},
+			{
+				label: 'BACKEND & APIS',
+				icon: 'database',
+				accent: 'secondary',
+				items: ['Node.js', 'Express', 'TypeScript', 'REST APIs', 'Prisma'],
+			},
+			{
+				label: 'BILLING & PAYMENTS',
+				icon: 'settings',
+				accent: 'engineering',
+				items: [
+					'Stripe',
+					'Subscription lifecycle',
+					'Billing workflows',
+					'PDF receipt generation',
+					'AWS S3',
+				],
+			},
+			{
+				label: 'THIRD-PARTY INTEGRATIONS',
+				icon: 'sync',
+				accent: 'tertiary',
+				items: ['Shopify', 'PartnerStack', 'Marketing platforms', 'Webhooks', 'External service APIs'],
+			},
+		],
 	},
 	{
 		slug: 'concio',
@@ -299,19 +413,162 @@ export const projects: Project[] = [
 			'Scheduling and booking platform for creating public booking pages, managing appointments and handling calendar-based workflows.',
 		role: 'Product Owner & Full-Stack Developer',
 		technologies: ['Angular', 'TypeScript', 'Node.js', 'Express', 'PostgreSQL', 'AWS'],
-		primaryImage: '/images/projects/placeholder.svg',
+		primaryImage: '/images/projects/concio/01-mentor-dashboard.png',
 		imageBadge: 'Mentoring & Scheduling',
 		footerLabel: 'Multi-Tenant Scheduling',
-		caseId: 'CONCIO // CASE',
-		heroDescription: 'Case study content to be added.',
-		overviewTitle: 'Project overview to be added.',
-		overviewBody: 'Overview content to be added.',
-		roleContributionTitle: 'Role and contribution to be added.',
-		roleContributionBody: 'Contribution details to be added.',
-		contributionsIntro: 'Verified scope to be documented.',
-		contributions: Array.from({ length: 6 }, (_, i) => placeholderContribution(i + 1)),
-		gallery: placeholderGallery({ name: 'Concio', primaryImage: '/images/projects/placeholder.svg' }),
-		technicalHighlights: placeholderTech(),
+		caseId: 'CONCIO // SCHEDULING',
+		heroDescription:
+			'A multi-tenant scheduling and booking platform for mentors and organizations, covering public booking pages, calendar availability, appointments, payments and operational dashboards.',
+		overviewTitle: 'Project Overview',
+		overviewBody:
+			'Concio is a scheduling and booking platform that allows experts and organizations to create services, publish booking pages, manage availability and handle appointments.\n\nThe platform includes customer-facing booking flows, mentor dashboards, organization management, calendar integrations, payment workflows and backend services.\n\nI worked as the main product developer and owner, working directly with the client and leading a development team while contributing across the frontend, backend, integrations and deployment workflow.',
+		roleContributionTitle: 'Product Ownership & Full-Stack Delivery',
+		roleContributionBody:
+			'I was the main product developer and owner for Concio, working directly with the client and leading a development team. I was responsible for full-stack product development across Angular, Node.js, Express and PostgreSQL, including booking workflows, scheduling, user and organization management, integrations and production deployment. I also set up and maintained the CI/CD workflow used to build and deploy the frontend, backend and database changes.',
+		contributionsIntro:
+			'Core product areas across booking, dashboards, integrations and production delivery.',
+		contributions: [
+			{
+				module: 'MODULE 01',
+				icon: 'calendar',
+				title: 'Booking & Scheduling Platform',
+				description:
+					'Built and maintained the core booking experience covering service selection, availability, appointment scheduling and booking confirmation.',
+			},
+			{
+				module: 'MODULE 02',
+				icon: 'web',
+				title: 'Public Booking Experience',
+				description:
+					'Worked on public-facing booking pages where customers can discover services, select available time slots and complete bookings.',
+			},
+			{
+				module: 'MODULE 03',
+				icon: 'group',
+				title: 'Mentor & Organization Dashboards',
+				description:
+					'Developed operational dashboards for managing users, services, bookings, earnings, organizations and scheduling workflows.',
+			},
+			{
+				module: 'MODULE 04',
+				icon: 'sync',
+				title: 'Calendar & External Integrations',
+				description:
+					'Worked with calendar and external service integrations including Google Calendar, Google Meet and other platform services.',
+			},
+			{
+				module: 'MODULE 05',
+				icon: 'register',
+				title: 'Payments & Transactions',
+				description:
+					'Implemented and maintained payment-related workflows supporting platform transactions and subscription/payment integrations.',
+			},
+			{
+				module: 'MODULE 06',
+				icon: 'settings',
+				title: 'CI/CD & Production Delivery',
+				description:
+					'Set up and maintained automated build and deployment workflows for the Angular frontend, Node.js backend and database migrations, supporting production delivery on AWS.',
+			},
+		],
+		gallery: [
+			{
+				image: '/images/projects/concio/01-mentor-dashboard.png',
+				alt: 'Concio mentor dashboard overview',
+				tag: '01 — MENTOR DASHBOARD',
+				title: 'Mentor Dashboard',
+				description:
+					'Concio mentor dashboard for managing bookings, services, earnings, clients and calendar activity.',
+				thumbCode: '01 — Mentor Dashboard',
+				thumbTitle: 'Mentor Dashboard',
+			},
+			{
+				image: '/images/projects/concio/02-booking-flow.png',
+				alt: 'Concio end-to-end booking and scheduling flow',
+				tag: '02 — BOOKING FLOW',
+				title: 'Booking & Scheduling Flow',
+				description:
+					'End-to-end booking workflow covering service selection, date and time selection, customer details, payment and booking confirmation.',
+				thumbCode: '02 — Booking & Scheduling Flow',
+				thumbTitle: 'Booking & Scheduling Flow',
+			},
+			{
+				image: '/images/projects/concio/03-mentor-booking.png',
+				alt: 'Concio mentor booking experience',
+				tag: '03 — MENTOR BOOKING',
+				title: 'Mentor Booking Experience',
+				description:
+					'Mentor-facing booking experience for selecting services, managing availability and scheduling sessions.',
+				thumbCode: '03 — Mentor Booking Experience',
+				thumbTitle: 'Mentor Booking Experience',
+			},
+			{
+				image: '/images/projects/concio/04-onboarding.png',
+				alt: 'Concio product onboarding journey',
+				tag: '04 — ONBOARDING',
+				title: 'Product Onboarding',
+				description:
+					'Multi-step onboarding flow covering account creation, profile setup, calendar connection, service configuration and publishing.',
+				thumbCode: '04 — Product Onboarding',
+				thumbTitle: 'Product Onboarding',
+			},
+			{
+				image: '/images/projects/concio/05-architecture-cicd.png',
+				alt: 'Concio system architecture and CI/CD pipeline',
+				tag: '05 — ARCHITECTURE & CI/CD',
+				title: 'System Architecture & CI/CD',
+				description:
+					'Concio application architecture and deployment pipeline covering frontend applications, backend APIs, PostgreSQL, Redis, external integrations and AWS production delivery.',
+				thumbCode: '05 — System Architecture & CI/CD',
+				thumbTitle: 'System Architecture & CI/CD',
+			},
+		],
+		technicalHighlights: [
+			{
+				label: 'FRONTEND ENGINEERING',
+				icon: 'web',
+				accent: 'primary',
+				items: [
+					'Angular',
+					'TypeScript',
+					'Angular Universal / SSR',
+					'Customer and admin applications',
+					'Booking interfaces',
+				],
+			},
+			{
+				label: 'BACKEND & APIS',
+				icon: 'database',
+				accent: 'secondary',
+				items: [
+					'Node.js',
+					'Express',
+					'REST APIs',
+					'Authentication & authorization',
+					'Multi-tenant backend services',
+				],
+			},
+			{
+				label: 'DATA & INFRASTRUCTURE',
+				icon: 'engineering',
+				accent: 'engineering',
+				items: ['PostgreSQL', 'Sequelize', 'Redis', 'Database migrations', 'AWS'],
+			},
+			{
+				label: 'INTEGRATIONS & REAL-TIME',
+				icon: 'sync',
+				accent: 'tertiary',
+				items: [
+					'Google Calendar',
+					'Google Meet',
+					'Stripe',
+					'PayPal',
+					'Zoom',
+					'Socket.IO',
+					'SendGrid',
+				],
+			},
+		],
 	},
 	{
 		slug: 'akute-health',
