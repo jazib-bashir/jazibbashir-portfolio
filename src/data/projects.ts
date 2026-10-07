@@ -15,12 +15,15 @@ export type ContributionModule = {
 	icon: IconName;
 	title: string;
 	description: string;
+	status?: string;
+	technologies?: string[];
 };
 
 export type TechnicalHighlightGroup = {
 	label: string;
 	icon: IconName;
 	accent: 'primary' | 'secondary' | 'tertiary' | 'engineering';
+	description?: string;
 	items: string[];
 };
 
@@ -318,20 +321,163 @@ export const projects: Project[] = [
 		shortDescription:
 			'Multi-tenant clinical software covering patient workflows, clinical documentation, scheduling, labs, prescribing, communication and telemedicine.',
 		role: 'Full-Stack Engineer',
-		technologies: ['React', 'Node.js', 'FHIR', 'MongoDB', 'Zoom', 'GraphQL'],
-		primaryImage: '/images/projects/placeholder.svg',
-		imageBadge: 'Healthcare Platform',
+		technologies: ['React', 'Node.js', 'FHIR', 'MongoDB', 'Zoom'],
+		primaryImage: '/images/projects/akute-health/01-patient-chart.png',
+		imageBadge: 'Clinical SaaS',
 		footerLabel: 'Clinical Workflows',
-		caseId: 'AKUTE // CASE',
-		heroDescription: 'Case study content to be added.',
-		overviewTitle: 'Project overview to be added.',
-		overviewBody: 'Overview content to be added.',
-		roleContributionTitle: 'Role and contribution to be added.',
-		roleContributionBody: 'Contribution details to be added.',
-		contributionsIntro: 'Verified scope to be documented.',
-		contributions: Array.from({ length: 6 }, (_, i) => placeholderContribution(i + 1)),
-		gallery: placeholderGallery({ name: 'Akute Health', primaryImage: '/images/projects/placeholder.svg' }),
-		technicalHighlights: placeholderTech(),
+		caseId: 'AKUTE // HEALTH',
+		heroDescription:
+			'Contributed to an existing multi-tenant clinical software platform across clinician workflows, backend APIs, clinical integrations and telemedicine.',
+		overviewTitle: 'Project Overview',
+		overviewBody:
+			'Akute Health is a multi-tenant clinical software platform supporting modern healthcare practices. The product includes clinician workflows for patient charts, clinical documentation, scheduling, labs, prescribing, documents, tasks, communication and telemedicine, with supporting patient-facing applications and healthcare integrations.\n\nAkute Health uses a React-based clinician application backed by a Node.js FHIR/API layer and MongoDB. The platform integrates with healthcare and communication services including prescribing, messaging, scheduling and telemedicine providers.\n\nMy contributions touched the clinician frontend, selected API/server workflows and telemedicine application rather than the entire platform architecture.',
+		roleContributionTitle: 'Production Feature Engineering Across Clinical Workflows',
+		roleContributionBody:
+			'Worked across the existing React clinician application and Node/FHIR API codebase, contributing production features across patient workflows, clinical communication, documents, prescribing and telemedicine. Also worked on larger clinical platform improvements including lab timeline and AI scribe integrations on development branches.',
+		contributionsIntro:
+			'Shipped production features across telemedicine, documents, pharmacy, scheduling and clinical communication. Lab timeline and related clinical platform work remained on development branches and is called out separately below.',
+		contributions: [
+			{
+				module: 'MODULE 01',
+				icon: 'web',
+				title: 'Telemedicine & Zoom Migration',
+				description:
+					'Migrated the telemedicine experience to the Zoom Video SDK and addressed session, browser compatibility and media-permission issues.',
+				status: 'Production',
+				technologies: ['React', 'TypeScript', 'Zoom Video SDK'],
+			},
+			{
+				module: 'MODULE 02',
+				icon: 'database',
+				title: 'Clinical Document Sharing',
+				description:
+					'Implemented document-sharing workflows that allow selected patient documents to be shared through the patient portal based on document tags.',
+				status: 'Production',
+				technologies: ['React', 'Node.js', 'FHIR', 'Patient Portal'],
+			},
+			{
+				module: 'MODULE 03',
+				icon: 'register',
+				title: 'Pharmacy Workflow',
+				description:
+					'Added the default pharmacy workflow to the patient summary and integrated the existing DoseSpot prescribing flow.',
+				status: 'Production',
+				technologies: ['React', 'DoseSpot', 'Clinical Workflows'],
+			},
+			{
+				module: 'MODULE 04',
+				icon: 'calendar',
+				title: 'Appointment Notification Consent',
+				description:
+					'Implemented appointment notification consent handling within the scheduling and reminder workflow.',
+				status: 'Production',
+				technologies: ['React', 'Node.js', 'Appointments'],
+			},
+			{
+				module: 'MODULE 05',
+				icon: 'group',
+				title: 'Clinical Inbox & Task Workflows',
+				description:
+					'Improved clinical communication and task workflows with conversation filters, loading behavior and task search across the existing application.',
+				status: 'Production',
+				technologies: ['React', 'Redux', 'Node.js'],
+			},
+			{
+				module: 'MODULE 06',
+				icon: 'touch',
+				title: 'FHIR Lab Timeline',
+				description:
+					'Developed a lab categorization and timeline engine that groups FHIR Observation results using panel structure and LOINC classification.',
+				status: 'Development / Unreleased',
+				technologies: ['FHIR', 'LOINC', 'Clinical Data', 'React'],
+			},
+		],
+		gallery: [
+			{
+				image: '/images/projects/akute-health/01-patient-chart.png',
+				alt: 'Akute Health patient chart and clinical workflow dashboard',
+				tag: '01 — PATIENT CHART',
+				title: 'Patient Chart',
+				description:
+					'Representative clinician workspace showing patient information, clinical summary, vitals, medications, conditions, lab results and care-team workflows.',
+				thumbCode: '01 — Patient Chart',
+				thumbTitle: 'Clinical patient chart and care-management workspace',
+			},
+			{
+				image: '/images/projects/akute-health/02-clinical-dashboard.png',
+				alt: 'Akute Health clinical operations dashboard portfolio visual',
+				tag: '02 — CLINICAL DASHBOARD',
+				title: 'Clinical Dashboard',
+				description:
+					'Representative dashboard showing patient activity, appointments, tasks and clinical document workflows.',
+				thumbCode: '02 — Clinical Dashboard',
+				thumbTitle: 'Clinical operations dashboard',
+			},
+			{
+				image: '/images/projects/akute-health/03-patient-documents.png',
+				alt: 'Akute Health patient documents and sharing workflow portfolio visual',
+				tag: '03 — PATIENT DOCUMENTS',
+				title: 'Patient Documents',
+				description:
+					'Document workflow covering clinical records, lab results, imaging, forms and patient-portal sharing controls.',
+				thumbCode: '03 — Patient Documents',
+				thumbTitle: 'Clinical document management and patient sharing',
+			},
+			{
+				image: '/images/projects/akute-health/04-telemedicine.png',
+				alt: 'Akute Health telemedicine visit workflow portfolio visual',
+				tag: '04 — TELEMEDICINE',
+				title: 'Telemedicine Visit',
+				description:
+					'Representative telemedicine experience with video visit controls, visit details, patient context and clinical communication.',
+				thumbCode: '04 — Telemedicine Visit',
+				thumbTitle: 'Integrated telemedicine workflow',
+			},
+			{
+				image: '/images/projects/akute-health/05-lab-results.png',
+				alt: 'Akute Health FHIR lab timeline portfolio visual (development work)',
+				tag: '05 — LAB RESULTS',
+				title: 'Lab Results',
+				description:
+					'Representative lab timeline interface grouping clinical observations into categories and longitudinal result views. Portfolio visual for development-branch lab timeline work, not a shipped production feature.',
+				thumbCode: '05 — Lab Results',
+				thumbTitle: 'FHIR-based clinical lab timeline (development)',
+			},
+		],
+		technicalHighlights: [
+			{
+				label: 'FRONTEND',
+				icon: 'web',
+				accent: 'primary',
+				description:
+					'Worked within the existing React clinician application across complex patient, clinical and communication workflows.',
+				items: ['React', 'React Router', 'Redux / Redux-Saga', 'Material UI', 'Formik / Yup'],
+			},
+			{
+				label: 'DATA & API',
+				icon: 'database',
+				accent: 'secondary',
+				description:
+					'Worked across FHIR-shaped clinical resources and Node.js API workflows in a multi-tenant healthcare application.',
+				items: ['FHIR', 'Node.js', 'MongoDB', 'REST APIs', 'Mongoose'],
+			},
+			{
+				label: 'CLINICAL INTEGRATIONS',
+				icon: 'sync',
+				accent: 'tertiary',
+				description:
+					'Integrated with existing healthcare and communication services across prescribing, messaging, scheduling and document workflows.',
+				items: ['DoseSpot', 'Twilio', 'Health Gorilla', 'Google Calendar', 'Phaxio'],
+			},
+			{
+				label: 'TELEMEDICINE & PLATFORM',
+				icon: 'settings',
+				accent: 'engineering',
+				description:
+					'Worked across realtime application behavior, telemedicine sessions and production observability within the existing platform.',
+				items: ['Zoom Video SDK', 'Socket.io', 'Redis', 'Sentry', 'Elastic APM'],
+			},
+		],
 	},
 ];
 

@@ -90,11 +90,19 @@ const firstSlide = project.gallery[0];
 				{project.contributions.map((item) => (
 					<div class="pd__module">
 						<div class="pd__module-top">
-							<span class="pd__module-code">{item.module}</span>
+							<span class="pd__module-code">
+								{item.module}
+								{item.status ? ` · ${item.status}` : ''}
+							</span>
 							<Icons name={item.icon} />
 						</div>
 						<h3 class="pd__module-title">{item.title}</h3>
 						<p class="pd__module-desc">{item.description}</p>
+						{item.technologies && item.technologies.length > 0 && (
+							<p class="pd__module-desc pd__module-tech">
+								{item.technologies.join(' · ')}
+							</p>
+						)}
 					</div>
 				))}
 			</div>
@@ -131,11 +139,11 @@ const firstSlide = project.gallery[0];
 				<div class="pd__gallery-stage">
 					{project.gallery.map((slide, index) => (
 						<div
-							class="pd__gallery-slide"
+							class:list={['pd__gallery-slide', index === 0 && 'is-active']}
 							data-gallery-slide
-							data-gallery-tag={slide.tag}
-							data-gallery-title={slide.title}
-							data-gallery-desc={slide.description}
+							data-slide-tag={slide.tag}
+							data-slide-title={slide.title}
+							data-slide-desc={slide.description}
 							hidden={index !== 0}
 							aria-hidden={index !== 0 ? 'true' : 'false'}
 						>
@@ -145,10 +153,10 @@ const firstSlide = project.gallery[0];
 				</div>
 				<div class="pd__gallery-caption">
 					<div class="pd__gallery-caption-main">
-						<span class="pd__gallery-tag" data-gallery-tag>{firstSlide?.tag}</span>
-						<span class="pd__gallery-slide-title" data-gallery-title>{firstSlide?.title}</span>
+						<span class="pd__gallery-tag" data-gallery-caption-tag>{firstSlide?.tag}</span>
+						<span class="pd__gallery-slide-title" data-gallery-caption-title>{firstSlide?.title}</span>
 					</div>
-					<span class="pd__gallery-slide-desc" data-gallery-desc>{firstSlide?.description}</span>
+					<span class="pd__gallery-slide-desc" data-gallery-caption-desc>{firstSlide?.description}</span>
 				</div>
 			</div>
 
@@ -182,6 +190,7 @@ const firstSlide = project.gallery[0];
 							<Icons name={group.icon} />
 							<span>{group.label}</span>
 						</div>
+						{group.description && <p class="pd__module-desc">{group.description}</p>}
 						<ul class="pd__tech-list">
 							{group.items.map((item) => (
 								<li>{item}</li>

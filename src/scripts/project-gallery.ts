@@ -7,9 +7,9 @@ export function initProjectGallery() {
 	const prev = root.querySelector<HTMLButtonElement>('[data-gallery-prev]');
 	const next = root.querySelector<HTMLButtonElement>('[data-gallery-next]');
 	const counter = root.querySelector<HTMLElement>('[data-gallery-counter]');
-	const tag = root.querySelector<HTMLElement>('[data-gallery-tag]');
-	const title = root.querySelector<HTMLElement>('[data-gallery-title]');
-	const desc = root.querySelector<HTMLElement>('[data-gallery-desc]');
+	const tag = root.querySelector<HTMLElement>('[data-gallery-caption-tag]');
+	const title = root.querySelector<HTMLElement>('[data-gallery-caption-title]');
+	const desc = root.querySelector<HTMLElement>('[data-gallery-caption-desc]');
 
 	if (slides.length === 0) return;
 
@@ -21,7 +21,8 @@ export function initProjectGallery() {
 	const update = () => {
 		slides.forEach((slide, i) => {
 			const active = i === index;
-			slide.hidden = !active;
+			slide.classList.toggle('is-active', active);
+			slide.toggleAttribute('hidden', !active);
 			slide.setAttribute('aria-hidden', String(!active));
 		});
 
@@ -34,9 +35,9 @@ export function initProjectGallery() {
 		if (counter) counter.textContent = `${pad(index + 1)} / ${pad(total)}`;
 
 		const meta = slides[index]?.dataset;
-		if (tag && meta?.galleryTag) tag.textContent = meta.galleryTag;
-		if (title && meta?.galleryTitle) title.textContent = meta.galleryTitle;
-		if (desc && meta?.galleryDesc) desc.textContent = meta.galleryDesc;
+		if (tag && meta?.slideTag) tag.textContent = meta.slideTag;
+		if (title && meta?.slideTitle) title.textContent = meta.slideTitle;
+		if (desc && meta?.slideDesc) desc.textContent = meta.slideDesc;
 
 		if (prev) prev.disabled = total <= 1;
 		if (next) next.disabled = total <= 1;

@@ -32,7 +32,9 @@ import Icons from '../layout/Icons.astro';
 				{projectSlides.map((slideProjects) => (
 					<div class="projects__slide" data-carousel-slide>
 						{slideProjects.map((project) => (
-							<article class="project-card">
+							<article
+								class:list={['project-card', project.slug === 'akute-health' && 'project-card--akute-health']}
+							>
 								<div class="project-card__media">
 									<img src={project.primaryImage} alt="" loading="lazy" width="1200" height="640" />
 									<span class="project-card__image-badge">{project.imageBadge}</span>
@@ -209,22 +211,32 @@ import Icons from '../layout/Icons.astro';
 
 	.project-card__media {
 		position: relative;
-		height: 14rem;
-		background: var(--color-surface-container);
+		box-sizing: border-box;
+		display: flex;
+		align-items: stretch;
+		justify-content: stretch;
+		width: 100%;
+		aspect-ratio: 16 / 9;
+		padding: var(--space-sm) var(--space-md);
+		background: var(--color-surface-container-low);
 		border-bottom: 1px solid var(--color-border-subtle);
 		overflow: hidden;
 	}
 
 	.project-card__media img {
+		display: block;
+		flex: 1 1 auto;
 		width: 100%;
 		height: 100%;
-		object-fit: cover;
-		object-position: top;
-		transition: transform 300ms ease;
+		min-width: 0;
+		min-height: 0;
+		object-fit: contain;
+		object-position: center center;
 	}
 
-	.project-card:hover .project-card__media img {
-		transform: scale(1.02);
+	/* Akute screenshots are edge-to-edge in the file; Concio’s placeholder includes built-in inset */
+	.project-card--akute-health .project-card__media {
+		padding: var(--space-md) var(--space-md) var(--space-sm);
 	}
 
 	.project-card__image-badge {
@@ -392,8 +404,5 @@ import Icons from '../layout/Icons.astro';
 			grid-template-columns: repeat(2, minmax(0, 1fr));
 		}
 
-		.project-card__media {
-			height: 16rem;
-		}
 	}
 </style>
